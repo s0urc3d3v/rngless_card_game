@@ -11,3 +11,5 @@ What can you expect from the glorious game?
  - Expert game design
  - Incredible art
  
+ #Code style guidelines: https://source.android.com/source/code-style.html
+ 
