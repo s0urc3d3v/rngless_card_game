@@ -1,8 +1,8 @@
-package com.mygdx.game;
+package com.mygdx.game.Views;
 
 /**
  * Created by matthewelbing on 06.02.17.
  */
-public abstract class View {
+public class Home {
 
 }
