@@ -7,7 +7,14 @@ public abstract class Card implements Pool.Poolable { //Implements a Card Inferf
     private int manaPoisoning;
 
 
-    public Card(int cost, int mp) {
+    //Constructor has to init values not declare for Poolable objects.
+    public Card() {
+        this.cost = 0;
+        this.manaPoisoning = 0;
+    }
+
+    //Same thing as constructor, but you can't call constructor after getting the Card from a pool.
+    public void init(int cost, int mp) {
         this.cost = cost;
         this.manaPoisoning = mp;
     }
