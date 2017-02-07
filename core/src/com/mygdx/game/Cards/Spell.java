@@ -1,7 +1,11 @@
 package com.mygdx.game.Cards;
 
 /**
- * Created by matthewelbing on 06.02.17.
+ * Created by john_bachman on 2/7/17.
  */
-public interface Spell {
+public class Spell extends Card {
+    @Override
+    public void reset() {
+
+    }
 }
