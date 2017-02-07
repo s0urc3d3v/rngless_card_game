@@ -3,6 +3,10 @@ package com.mygdx.game.Cards;
 public class Spell extends Card {
 
 
+    public Spell(int cost, int mp) {
+        super(cost, mp);
+    }
+
     @Override
     public void reset() {
 
