@@ -3,6 +3,9 @@ package com.mygdx.game.Cards;
 import com.badlogic.gdx.utils.Pool;
 
 public abstract class Card implements Pool.Poolable { //Implements a Card Inferface
+    private int cost = 0;
+    private int manaPoisoning = 0;
+
     @Override
     public abstract void reset();
 
@@ -12,7 +15,6 @@ public abstract class Card implements Pool.Poolable { //Implements a Card Inferf
 
     public abstract void onAnimate();
 
-    public abstract void onPlay();
+    public abstract void render();
 
-    public abstract void onRemovedFromPlay();
 }
