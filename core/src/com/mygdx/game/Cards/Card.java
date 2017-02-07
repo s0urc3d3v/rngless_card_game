@@ -1,10 +1,12 @@
 package com.mygdx.game.Cards;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Pool;
 
 public abstract class Card implements Pool.Poolable { //Implements a Card Inferface
     private int cost;
     private int manaPoisoning;
+    Texture cardImg = null; //This must be loaded mit a batch
 
 
     //Constructor has to init values not declare for Poolable objects.
@@ -18,6 +20,7 @@ public abstract class Card implements Pool.Poolable { //Implements a Card Inferf
         this.cost = cost;
         this.manaPoisoning = mp;
     }
+
 
     @Override
     public abstract void reset();
