@@ -21,4 +21,9 @@ public class Spell extends Card {
 
     }
 
+    @Override
+    public void render() {
+
+    }
+
 }
