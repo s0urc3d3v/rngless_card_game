@@ -21,6 +21,7 @@ public class Minion extends Card {
      *            2. manaPoison
      *            3. health
      *            4. attack
+     *            5. Target - should be targetable
      */
     @Override
     public void init(int... arg) {
@@ -41,6 +42,10 @@ public class Minion extends Card {
 
     public int getHealth() {
         return health;
+    }
+
+    public int getCurrentHealth() {
+        return currentHealth;
     }
 
 

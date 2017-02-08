@@ -12,6 +12,7 @@ public class Commander extends Minion {
      *            2. manaPoison
      *            3. health
      *            4. attack
+     *            5. Target - should be immune
      */
     @Override
     public void init(int... arg) {
