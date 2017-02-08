@@ -8,8 +8,6 @@ public class Spell extends Card {
     }
 
     /**
-     * All subclasses must have a init method that acts as a constructor
-     * This allows them to poolable
      * @param arg: A variable number of integers that get passed in for arguments.
      *           1. Cost
      *           2. manaPoisoning
