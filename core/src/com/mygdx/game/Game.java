@@ -13,7 +13,6 @@ import com.mygdx.game.Views.View;
 import java.util.List;
 
 public class Game extends ApplicationAdapter {
-	SpriteBatch batch;
 	View[] views = new View[3];
 	int currentViewIndex = viewIndexes.HOME.getValue();
 
@@ -27,6 +26,8 @@ public class Game extends ApplicationAdapter {
 
 	@Override
 	public void render () {
+		int startingIndex = currentViewIndex;
+
 		//Clear the screen
 		Gdx.gl.glClearColor(65/255f,105/255f,225/255f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -34,11 +35,11 @@ public class Game extends ApplicationAdapter {
 		//Call the current views methods.
 		currentViewIndex = views[currentViewIndex].update().getValue();
 		views[currentViewIndex].render();
-	}
 
-	@Override
-	public void dispose () {
-		batch.dispose();
+		//Check to see if the view was switched
+		if(startingIndex != currentViewIndex) {
+			Controller.callViewSwitch();
+		}
 	}
 
 	//The Indexes of the current view for easy switching.

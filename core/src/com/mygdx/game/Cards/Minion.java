@@ -8,10 +8,26 @@ public class Minion extends Card {
 
     private int attack;
 
-    public Minion(int manaCost, int manaPoison, int health, int attack) {
-        super(manaCost, manaPoison);
-        this.health = health;
-        this.attack = attack;
+    public Minion() {
+        super();
+        this.health = 0;
+        this.attack = 0;
+        currentHealth = 0;
+    }
+
+    /**
+     * @param arg is a list of integers
+     *            1. manaCost
+     *            2. manaPoison
+     *            3. health
+     *            4. attack
+     *            5. Target - should be targetable
+     */
+    @Override
+    public void init(int... arg) {
+        super.init(arg);
+        health = arg[2];
+        attack = arg[3];
         currentHealth = health;
     }
 
@@ -26,6 +42,10 @@ public class Minion extends Card {
 
     public int getHealth() {
         return health;
+    }
+
+    public int getCurrentHealth() {
+        return currentHealth;
     }
 
 
