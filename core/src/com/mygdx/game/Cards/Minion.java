@@ -19,15 +19,15 @@ public class Minion extends Card {
      * @param arg is a list of integers
      *            1. manaCost
      *            2. manaPoison
-     *            3. health
-     *            4. attack
-     *            5. Target - should be targetable
+     *            3. Target - should be targetable
+     *            4. health
+     *            5. attack
      */
     @Override
     public void init(int... arg) {
         super.init(arg);
-        health = arg[2];
-        attack = arg[3];
+        health = arg[3];
+        attack = arg[4];
         currentHealth = health;
     }
 

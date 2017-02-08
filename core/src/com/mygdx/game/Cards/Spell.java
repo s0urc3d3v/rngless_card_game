@@ -11,9 +11,7 @@ public class Spell extends Card {
      * @param arg: A variable number of integers that get passed in for arguments.
      *           1. Cost
      *           2. manaPoisoning
-     *           3. Health
-     *           4. Attack
-     *           5. Targetability - immune
+     *           3. Target Ability
      */
     @Override
     public void init(int... arg) {

@@ -28,7 +28,7 @@ public abstract class Card implements Pool.Poolable {
     public void init(int... arg) {
         cost = arg[0];
         manaPoisoning = arg[1];
-        target = arg[4];
+        target = arg[2];
     }
 
 
