@@ -13,7 +13,6 @@ import com.mygdx.game.Views.View;
 import java.util.List;
 
 public class Game extends ApplicationAdapter {
-	SpriteBatch batch;
 	View[] views = new View[3];
 	int currentViewIndex = viewIndexes.HOME.getValue();
 
@@ -34,11 +33,6 @@ public class Game extends ApplicationAdapter {
 		//Call the current views methods.
 		currentViewIndex = views[currentViewIndex].update().getValue();
 		views[currentViewIndex].render();
-	}
-
-	@Override
-	public void dispose () {
-		batch.dispose();
 	}
 
 	//The Indexes of the current view for easy switching.

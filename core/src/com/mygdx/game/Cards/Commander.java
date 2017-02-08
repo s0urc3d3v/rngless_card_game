@@ -1,11 +1,20 @@
 package com.mygdx.game.Cards;
 
-/**
- * Created by tzur_almog on 2/7/17.
- */
 public class Commander extends Minion {
 
-    public Commander(int manaCost, int manaPoison, int health, int attack) {
-        super(0, 0, health, attack);
+    public Commander() {
+        super();
+    }
+
+    /**
+     * @param arg is a list of integers
+     *            1. manaCost
+     *            2. manaPoison
+     *            3. health
+     *            4. attack
+     */
+    @Override
+    public void init(int... arg) {
+        super.init(arg);
     }
 }
