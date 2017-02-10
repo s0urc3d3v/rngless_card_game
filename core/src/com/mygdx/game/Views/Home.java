@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.game.Game;
 
+
 public class Home extends View {
 
     private TextButton.TextButtonStyle tbs = new TextButton.TextButtonStyle();
