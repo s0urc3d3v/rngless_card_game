@@ -1,9 +1,17 @@
 package com.mygdx.game.Cards;
 
+import com.mygdx.game.Player;
+
 public class Commander extends Minion {
+
+    Player myPlayer;
+
+    private int attack;
 
     public Commander() {
         super();
+        attack=0;
+
     }
 
     /**
@@ -43,4 +51,15 @@ public class Commander extends Minion {
     public void render() {
 
     }
+    // Minion stuff
+    public void takeDamage(int damageTaken){
+        myPlayer.Health= myPlayer.Health-damageTaken;
+    }
+
+    // Connects commander to player
+    public void connectToPlayer(Player Jesus){
+        myPlayer = Jesus;
+
+    }
+
 }
