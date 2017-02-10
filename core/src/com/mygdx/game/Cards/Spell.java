@@ -3,9 +3,21 @@ package com.mygdx.game.Cards;
 public class Spell extends Card {
 
 
-    public Spell(int cost, int mp) {
-        super(cost, mp);
+    public Spell() {
+        super();
     }
+
+    /**
+     * @param arg: A variable number of integers that get passed in for arguments.
+     *           1. Cost
+     *           2. manaPoisoning
+     *           3. Target Ability
+     */
+    @Override
+    public void init(int... arg) {
+        super.init(arg);
+    }
+
 
     @Override
     public void reset() {
