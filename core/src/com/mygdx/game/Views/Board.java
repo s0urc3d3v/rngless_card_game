@@ -15,4 +15,9 @@ public class Board extends View {
         //Don't switch off board by default
         return Game.viewIndexes.BOARD;
     }
+
+    @Override
+    public void create() {
+
+    }
 }

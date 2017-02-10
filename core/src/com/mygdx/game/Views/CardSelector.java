@@ -13,4 +13,9 @@ public class CardSelector extends View {
         //Don't switch off CardSelector by default
         return Game.viewIndexes.CARD_SELECT;
     }
+
+    @Override
+    public void create() {
+
+    }
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
+
     private static List<ViewSwitchListener> viewSwitchListeners = new ArrayList<>();
 
     public static void attachListener(ViewSwitchListener viewSwitchListener) {
