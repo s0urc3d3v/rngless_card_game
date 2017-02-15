@@ -9,5 +9,10 @@ import junit.framework.TestCase;
  */
 
 public class TestGameLoop extends TestCase {
-    Controller.
+    public void testMainLoopTurnStateAdvance(){
+        Controller.actionPerformed(true);
+    }
+    public void testMainLoopTurnStateNoAdvance(){
+        Controller.actionPerformed(false);
+    }
 }
