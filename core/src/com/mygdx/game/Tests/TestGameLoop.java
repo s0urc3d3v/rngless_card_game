@@ -9,5 +9,8 @@ import junit.framework.TestCase;
  */
 
 public class TestGameLoop extends TestCase {
-    Controller.
+    public void testGameLoop() {
+        Controller controller  = new Controller();
+        controller.actionPerformed(true);
+    }
 }

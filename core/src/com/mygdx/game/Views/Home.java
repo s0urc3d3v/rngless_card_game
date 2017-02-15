@@ -31,13 +31,11 @@ public class Home extends View {
     public void create() {
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
-       // buttonAtlas = new TextureAtlas(Gdx.files.internal("buttons/buttons.pack"));
-        //skin.addRegions(buttonAtlas);
-      //  tbs.up = skin.getDrawable("up-button");
-       // tbs.down = skin.getDrawable("down-button");
-       // tbs.checked = skin.getDrawable("checked-button");
+
+        //Make the menu buttons
         SimpleButton playButton = new SimpleButton("Play");
 
+        //Add them to the screen in a simple layout
         Table table = new Table();
         table.setFillParent(true);
         table.center().center();
