@@ -13,9 +13,9 @@ public class Controller {
         playTwo,
         End
     }
-    private playTurnStages currentTurnState = playTurnStages.playOne;
-    private boolean playerOneTurn = true;
-    private boolean shouldChangePlayer = false;
+    private static playTurnStages currentTurnState = playTurnStages.playOne;
+    private static boolean playerOneTurn = true;
+    private static boolean shouldChangePlayer = false;
 
     private static List<ViewSwitchListener> viewSwitchListeners = new ArrayList<>();
 
@@ -37,7 +37,7 @@ public class Controller {
     * 5. play minions
     * 6. End
      */
-    public void actionPerformed(boolean advanceTurnState){
+    public static void actionPerformed(boolean advanceTurnState){
         //Call when you do things always
         playTurnStages[] turnStages = playTurnStages.values();
         if (shouldChangePlayer) {
