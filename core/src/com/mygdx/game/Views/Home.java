@@ -9,15 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.game.Game;
+import com.mygdx.game.UI.SimpleButton;
 
 
 public class Home extends View {
 
-    private TextButton.TextButtonStyle tbs = new TextButton.TextButtonStyle();
-    private Button play;
-    private BitmapFont font;
-    private Skin skin;
-    private TextureAtlas buttonAtlas;
     private Stage stage;
 
     @Override
@@ -35,20 +31,17 @@ public class Home extends View {
     public void create() {
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
-        font = new BitmapFont();
-        skin = new Skin();
        // buttonAtlas = new TextureAtlas(Gdx.files.internal("buttons/buttons.pack"));
         //skin.addRegions(buttonAtlas);
-        tbs.font = font;
       //  tbs.up = skin.getDrawable("up-button");
        // tbs.down = skin.getDrawable("down-button");
        // tbs.checked = skin.getDrawable("checked-button");
-        play = new TextButton("Play", tbs);
+        SimpleButton playButton = new SimpleButton("Play");
 
         Table table = new Table();
         table.setFillParent(true);
         table.center().center();
-        table.add(play);
+        table.add(playButton.getButton());
         stage.addActor(table);
 
     }
