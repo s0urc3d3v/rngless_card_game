@@ -3,14 +3,9 @@ package com.mygdx.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.game.Views.Board;
 import com.mygdx.game.Views.CardSelector;
 import com.mygdx.game.Views.Home;
 import com.mygdx.game.Views.View;
-
-import java.util.List;
 
 public class Game extends ApplicationAdapter {
 	View[] views = new View[3];
@@ -20,6 +15,7 @@ public class Game extends ApplicationAdapter {
 	public void create () {
 		//Adding in the Default Views
 		views[viewIndexes.HOME.getValue()] = new Home();
+		views[viewIndexes.HOME.getValue()].create();
 		views[viewIndexes.CARD_SELECT.getValue()] = new CardSelector();
 		views[viewIndexes.BOARD.getValue()] = null; //Dont set a default board.
 	}

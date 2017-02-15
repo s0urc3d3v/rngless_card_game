@@ -8,4 +8,8 @@ public abstract class View { //update, etc
 
     //Return the index of the view to switch to that view.
     public abstract Game.viewIndexes update();
+
+
+    //Initialise objects in this function
+    public abstract void create();
 }
