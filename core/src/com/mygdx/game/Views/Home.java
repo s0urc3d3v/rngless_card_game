@@ -36,13 +36,12 @@ public class Home extends View {
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
         font = new BitmapFont();
-        skin = new Skin();
-       // buttonAtlas = new TextureAtlas(Gdx.files.internal("buttons/buttons.pack"));
+        skin = new Skin(Gdx.files.internal("shadeui/uiskin.json"));
+       // buttonAtlas = new TextureAtlas());
         //skin.addRegions(buttonAtlas);
         tbs.font = font;
-      //  tbs.up = skin.getDrawable("up-button");
-       // tbs.down = skin.getDrawable("down-button");
-       // tbs.checked = skin.getDrawable("checked-button");
+        tbs.up = skin.getDrawable("button");
+        tbs.down = skin.getDrawable("button-down");
         play = new TextButton("Play", tbs);
 
         Table table = new Table();
