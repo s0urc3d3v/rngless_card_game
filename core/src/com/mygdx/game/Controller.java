@@ -38,7 +38,7 @@ public class Controller {
     * 6. End
      */
     public void actionPerformed(boolean advanceTurnState){
-        //Call when you do things
+        //Call when you do things always
         playTurnStages[] turnStages = playTurnStages.values();
         if (shouldChangePlayer) {
             playerOneTurn = !playerOneTurn;
