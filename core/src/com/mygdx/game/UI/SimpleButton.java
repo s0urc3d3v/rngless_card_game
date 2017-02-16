@@ -3,13 +3,13 @@ package com.mygdx.game.UI;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.sun.javafx.webkit.EventLoopImpl;
 
-/**
- * Created by john_bachman on 2/15/17.
- */
+
 public class SimpleButton extends TextButton {
     protected static BitmapFont font;
     protected static Skin skin;
