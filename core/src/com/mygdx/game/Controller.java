@@ -32,12 +32,19 @@ public class Controller {
     }
 
     /*
-    * 1.Turn begin (get mana poisoning)
-    * 2. Play minion
-    * 3. Attack
-    * 4. Protect (block)
-    * 5. play minions
-    * 6. End
+
+     */
+
+    /**
+     * Handles game events removing the requirement to have a main loop hogging resources.
+     * @param advanceTurnState tells wheather the game state (shown below) is required
+     *
+     * 1. Turn begin (get mana poisoning)
+     * 2. Play minion
+     * 3. Attack
+     * 4. Protect (block)
+     * 5. play minions
+     * 6. End
      */
     public static void actionPerformed(boolean advanceTurnState){
         //Call when you do things always
