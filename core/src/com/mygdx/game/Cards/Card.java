@@ -56,4 +56,6 @@ public abstract class Card implements Pool.Poolable {
         return manaPoisoning;
     }
 
+
+
 }
