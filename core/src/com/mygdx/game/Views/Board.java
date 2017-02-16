@@ -24,9 +24,9 @@ public class Board extends View {
 
     @Override
     public void render() {
-        stage.draw();
         Gdx.gl.glClearColor(255/255f,102/255f,102/255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+       // stage.draw();
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Board extends View {
 
     @Override
     public void create() {
-        stage = new Stage();
-        Gdx.input.setInputProcessor(stage);
+       // stage = new Stage();
+       // Gdx.input.setInputProcessor(stage);
     }
 }
