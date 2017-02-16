@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.game.Views.Board;
 import com.mygdx.game.Views.CardSelector;
 import com.mygdx.game.Views.Home;
 import com.mygdx.game.Views.View;
@@ -22,7 +23,8 @@ public class Game extends ApplicationAdapter {
 		views[viewIndexes.HOME.getValue()] = new Home();
 		views[viewIndexes.HOME.getValue()].create();
 		views[viewIndexes.CARD_SELECT.getValue()] = new CardSelector();
-		views[viewIndexes.BOARD.getValue()] = null; //Dont set a default board.
+		views[viewIndexes.BOARD.getValue()] = new Board(); //Dont set a default board.
+		views[viewIndexes.BOARD.getValue()].create();
 	}
 
 	@Override
@@ -64,5 +66,9 @@ public class Game extends ApplicationAdapter {
 		public int getValue() {
 			return value;
 		}
+	}
+
+	public void setCurrentViewIndex(int i) {
+		currentViewIndex = i;
 	}
 }
