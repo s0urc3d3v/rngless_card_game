@@ -1,29 +1,16 @@
 package com.mygdx.game.Views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.Matrix4;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.tools.texturepacker.TexturePacker;
-import com.badlogic.gdx.utils.Scaling;
-import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.mygdx.game.Controller;
 import com.mygdx.game.Game;
 import com.mygdx.game.UI.SimpleButton;
-import sun.java2d.pipe.SpanShapeRenderer;
-
-import java.text.SimpleDateFormat;
 
 
-public class Home extends View {
+public class Home extends View implements ViewSwitchListener {
 
     private Stage stage;
 
@@ -32,7 +19,7 @@ public class Home extends View {
     private SimpleButton settingsButton;
     private SimpleButton quitButton;
 
-    Game.viewIndexes vi = Game.viewIndexes.HOME;
+    Game.viewIndexes nextViewIndex = Game.viewIndexes.HOME;
 
     @Override
     public void render() {
@@ -47,11 +34,14 @@ public class Home extends View {
     @Override
     public Game.viewIndexes update() {
         //Don't switch off Home by default
-        return vi;
+        return nextViewIndex;
     }
 
     @Override
     public void create() {
+        //Make sure that our methods get called when the view switches
+        Controller.attachListener(this);
+
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
 
@@ -61,7 +51,7 @@ public class Home extends View {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                vi = Game.viewIndexes.BOARD;
+                nextViewIndex = Game.viewIndexes.BOARD;
                 update();
                 Controller.callViewSwitch();
             }
@@ -69,6 +59,12 @@ public class Home extends View {
         customButton = new SimpleButton("Customize Deck");
         settingsButton = new SimpleButton("Settings");
         quitButton = new SimpleButton("Quit");
+
+        quitButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.exit();
+            }
+        });
 
         Table table = new Table();
         assembleTable(table);
@@ -86,5 +82,12 @@ public class Home extends View {
         table.add(settingsButton).padBottom(10);
         table.row();
         table.add(quitButton).padBottom(10);
+    }
+
+    @Override
+    public void onSwitch() {
+        //Set us back to our current pane
+        //This is so we do not switch away when returning to home.
+        nextViewIndex = Game.viewIndexes.HOME;
     }
 }
