@@ -26,7 +26,6 @@ public class SimpleButton {
         //Set states for various textures
         tbs.up = skin.getDrawable("button");
         tbs.down = skin.getDrawable("button-down");
-        tbs.checked = skin.getDrawable("button-down");
         //Basic font
         font = new BitmapFont();
         tbs.font = font;
