@@ -20,20 +20,20 @@ public class SimpleButton {
 
     //Make the stuff that all simple buttons need.
     static {
-        //Load up texture atlas
-        simpleAtlas = new TextureAtlas(Gdx.files.internal("buttons/buttons.pack"));
-        skin.addRegions(simpleAtlas);
+        //Load up the texture atlas in the form of a skin
+        skin = new Skin(Gdx.files.internal("shadeui/uiskin.json"));
 
         //Set states for various textures
-        tbs.up = skin.getDrawable("up-button");
-        tbs.down = skin.getDrawable("down-button");
-        tbs.checked = skin.getDrawable("down-button");
+        tbs.up = skin.getDrawable("button");
+        tbs.down = skin.getDrawable("button-down");
+        tbs.checked = skin.getDrawable("button-down");
+        //Basic font
         font = new BitmapFont();
-        skin = new Skin();
         tbs.font = font;
     }
     
     public SimpleButton(String text) {
+        //Create a button with our custom text and style
         button = new TextButton(text, tbs);
     }
 
