@@ -50,10 +50,8 @@ public class Home extends View implements ViewSwitchListener {
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
                 nextViewIndex = Game.viewIndexes.BOARD;
                 update();
-                Controller.callViewSwitch();
             }
         });
         customButton = new SimpleButton("Customize Deck");
@@ -73,6 +71,7 @@ public class Home extends View implements ViewSwitchListener {
 
 
     private void assembleTable(Table table) {
+        //Puts buttons onto the screen in a vertical alignment
         table.setFillParent(true);
         table.center().center();
         table.add(playButton).padBottom(10);
@@ -85,7 +84,7 @@ public class Home extends View implements ViewSwitchListener {
     }
 
     @Override
-    public void onSwitch() {
+    public void onSwitch(int switchingToIndex) {
         //Set us back to our current pane
         //This is so we do not switch away when returning to home.
         nextViewIndex = Game.viewIndexes.HOME;

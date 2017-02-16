@@ -25,9 +25,9 @@ public class Controller {
         viewSwitchListeners.add(viewSwitchListener);
     }
 
-    public static void callViewSwitch() {
+    public static void callViewSwitch(int switchingToIndex) {
         for(ViewSwitchListener vsl: viewSwitchListeners) {
-            vsl.onSwitch();
+            vsl.onSwitch(switchingToIndex);
         }
     }
 

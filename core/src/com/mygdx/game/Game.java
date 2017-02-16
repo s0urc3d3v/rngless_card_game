@@ -43,7 +43,7 @@ public class Game extends ApplicationAdapter {
 
 		//Check to see if the view was switched
 		if(startingIndex != currentViewIndex) {
-			Controller.callViewSwitch();
+			Controller.callViewSwitch(currentViewIndex);
 		}
 	}
 
