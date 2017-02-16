@@ -60,13 +60,13 @@ public class Home extends View {
         Table table = new Table();
         table.setFillParent(true);
         table.center().center();
-        table.add(playButton.getButton()).padBottom(10);
+        table.add(playButton).padBottom(10);
         table.row();
-        table.add(customButton.getButton()).padBottom(10);
+        table.add(customButton).padBottom(10);
         table.row();
-        table.add(settingsButton.getButton()).padBottom(10);
+        table.add(settingsButton).padBottom(10);
         table.row();
-        table.add(quitButton.getButton()).padBottom(10);
+        table.add(quitButton).padBottom(10);
         stage.addActor(table);
     }
 }
