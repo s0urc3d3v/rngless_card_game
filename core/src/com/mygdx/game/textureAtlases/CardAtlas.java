@@ -1,7 +1,7 @@
 package com.mygdx.game.textureAtlases;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.graphics.Texture;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 
 public class CardAtlas {
-    public static ArrayList<Skin> skins = new ArrayList<>();
+    public static ArrayList<Texture> skins = new ArrayList<>();
 
     static {
         //Gets a list a files in the Cards asset directory
@@ -19,11 +19,11 @@ public class CardAtlas {
 
         //Adds all the card imgs to an array list as textures
         for (int i = 0; i < files.length; i++) {
-            skins.add(new Skin(Gdx.files.internal(files[i].getPath())));
+            skins.add(new Texture(Gdx.files.internal(files[i].getPath())));
         }
     }
 
-    public static ArrayList<Skin> getCards() {
+    public static ArrayList<Texture> getCards() {
         return skins;
     }
 }

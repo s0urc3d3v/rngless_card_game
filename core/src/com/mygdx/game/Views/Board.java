@@ -1,10 +1,15 @@
 package com.mygdx.game.Views;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -19,11 +24,15 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.mygdx.game.Controller;
 import com.mygdx.game.Game;
 import com.mygdx.game.UI.SimpleButton;
+import com.mygdx.game.textureAtlases.CardAtlas;
+
+import java.util.ArrayList;
 
 
 public class Board extends View {
-
+    private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private Stage stage;
+    private SpriteBatch spriteBatch;
 
     private Game.viewIndexes returnIndex = Game.viewIndexes.BOARD;
 
@@ -34,6 +43,10 @@ public class Board extends View {
         Gdx.gl.glClearColor(255/255f,102/255f,102/255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.draw();
+        ArrayList<Texture> cardTexture = CardAtlas.getCards();
+        spriteBatch.begin();
+       // spriteBatch.draw(null, 100, 100);
+        spriteBatch.end();
     }
 
     @Override
@@ -72,5 +85,6 @@ public class Board extends View {
         t.center().center();
         t.row();
         t.add(backButton).pad(10);
+        spriteBatch = new SpriteBatch();
     }
 }
