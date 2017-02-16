@@ -1,6 +1,7 @@
 package com.mygdx.game.Views;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Matrix4;
@@ -69,6 +70,12 @@ public class Home extends View {
         customButton = new SimpleButton("Customize Deck");
         settingsButton = new SimpleButton("Settings");
         quitButton = new SimpleButton("Quit");
+
+        quitButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.exit();
+            }
+        });
 
         Table table = new Table();
         assembleTable(table);
