@@ -76,7 +76,7 @@ public class Home extends View {
     }
 
 
-    public void assembleTable(Table table) {
+    private void assembleTable(Table table) {
         table.setFillParent(true);
         table.center().center();
         table.add(playButton).padBottom(10);
