@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    public enum playTurnStages{
+
+    public enum playTurnStages {
+
         playOne,
         Attack,
         Protect,
