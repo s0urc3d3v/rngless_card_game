@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 
 public class CardAtlas {
-    protected static ArrayList<Skin> skins = new ArrayList<>();
+    public static ArrayList<Skin> skins = new ArrayList<>();
 
     static {
         //Gets a list a files in the Cards asset directory
@@ -21,6 +21,9 @@ public class CardAtlas {
         for (int i = 0; i < files.length; i++) {
             skins.add(new Skin(Gdx.files.internal(files[i].getPath())));
         }
+    }
 
+    public static ArrayList<Skin> getCards() {
+        return skins;
     }
 }
