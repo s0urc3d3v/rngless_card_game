@@ -26,6 +26,7 @@ public class Minion extends Card {
      */
     @Override
     public void init(int... arg) {
+
         super.init(arg);
         health = arg[3];
         attack = arg[4];

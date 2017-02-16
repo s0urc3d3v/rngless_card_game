@@ -3,6 +3,7 @@ package com.mygdx.game.UI;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -34,6 +35,10 @@ public class SimpleButton {
     public SimpleButton(String text) {
         //Create a button with our custom text and style
         button = new TextButton(text, tbs);
+    }
+
+    public void addListener(EventListener listener) {
+        button.addListener(listener);
     }
 
     public Button getButton() {
