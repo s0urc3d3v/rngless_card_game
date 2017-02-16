@@ -27,7 +27,6 @@ public class Game extends ApplicationAdapter {
 
 	@Override
 	public void render () {
-		System.out.println("Called");
 		int startingIndex = currentViewIndex;
 
 		//Clear the screen
