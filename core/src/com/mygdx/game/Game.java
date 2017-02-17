@@ -18,11 +18,10 @@ public class Game extends ApplicationAdapter {
 
 	@Override
 	public void create () {
-
 		//Adding in the Default Views
 		views[viewIndexes.HOME.getValue()] = new Home();
 		views[viewIndexes.HOME.getValue()].create();
-		views[viewIndexes.CARD_SELECT.getValue()] = new CardSelector();
+		views[viewIndexes.CARDSELECTOR.getValue()] = new CardSelector();
 		views[viewIndexes.BOARD.getValue()] = new Board(); //Dont set a default board.
 		views[viewIndexes.BOARD.getValue()].create();
 	}
@@ -57,7 +56,7 @@ public class Game extends ApplicationAdapter {
 	//The Indexes of the current view for easy switching.
 	public enum viewIndexes {
 		HOME(0),
-		CARD_SELECT(1),
+		CARDSELECTOR(1),
 		BOARD(2);
 
 		private final int value;

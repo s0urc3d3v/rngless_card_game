@@ -12,11 +12,7 @@ import com.mygdx.game.Game;
 import com.mygdx.game.UI.SimpleButton;
 
 public class Board extends View implements ViewSwitchListener {
-    private Stage stage;
     private SpriteBatch spriteBatch;
-
-    private Game.viewIndexes returnIndex = Game.viewIndexes.BOARD;
-
     private SimpleButton backButton;
 
     @Override
@@ -43,10 +39,7 @@ public class Board extends View implements ViewSwitchListener {
 
     @Override
     public void create() {
-        //Tell us when switching methods
-       Controller.attachListener(this);
-
-       stage = new Stage();
+        super.create();
        backButton = new SimpleButton("Go Back");
        backButton.addListener(new ClickListener() {
            @Override
@@ -68,12 +61,7 @@ public class Board extends View implements ViewSwitchListener {
 
     @Override
     public void onSwitch(int switchingToIndex) {
-        if(switchingToIndex == Game.viewIndexes.BOARD.getValue()) {
-            //Then we should be taking the input now
-            Gdx.input.setInputProcessor(stage);
-        } else {
-            //We are switching off this screen and should make sure to set back our return index
-            returnIndex = Game.viewIndexes.BOARD;
-        }
+        super.onSwitch(switchingToIndex);
+        returnIndex = Game.viewIndexes.BOARD;
     }
 }

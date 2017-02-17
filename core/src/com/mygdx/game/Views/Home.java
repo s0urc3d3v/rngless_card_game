@@ -11,15 +11,10 @@ import com.mygdx.game.UI.SimpleButton;
 
 
 public class Home extends View implements ViewSwitchListener {
-
-    private Stage stage;
-
     private SimpleButton playButton;
     private SimpleButton customButton;
     private SimpleButton settingsButton;
     private SimpleButton quitButton;
-
-    Game.viewIndexes returnIndex = Game.viewIndexes.HOME;
 
     @Override
     public void render() {
@@ -28,7 +23,7 @@ public class Home extends View implements ViewSwitchListener {
 
     @Override
     public void resize(int width, int height) {
-        stage.getViewport().update(width, height, true);
+        super.resize(width, height);
     }
 
     @Override
@@ -39,10 +34,8 @@ public class Home extends View implements ViewSwitchListener {
 
     @Override
     public void create() {
-        //Make sure that our methods get called when the view switches
-        Controller.attachListener(this);
-
-        stage = new Stage();
+        super.create();
+        //Set us as the default input processor, as this is the primary view.
         Gdx.input.setInputProcessor(stage);
 
         //Create a simple Play button
@@ -84,13 +77,8 @@ public class Home extends View implements ViewSwitchListener {
 
     @Override
     public void onSwitch(int switchingToIndex) {
-        if(switchingToIndex == Game.viewIndexes.HOME.getValue()) {
-            //This switch is to our view
-            //Then we should be taking the input now
-            Gdx.input.setInputProcessor(stage);
-        } else {
-            //We are switching off this screen and should make sure to set back our return index
-            returnIndex = Game.viewIndexes.HOME;
-        }
+        super.onSwitch(switchingToIndex);
+        //Reset our return value.
+        returnIndex = Game.viewIndexes.HOME;
     }
 }
