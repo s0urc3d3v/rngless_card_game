@@ -49,7 +49,9 @@ public class Game extends ApplicationAdapter {
 
 	@Override
 	public void resize(int width, int height) {
-		views[currentViewIndex].resize(width, height);
+		for(View view: views) {
+			view.resize(width, height);
+		}
 	}
 
 	//The Indexes of the current view for easy switching.

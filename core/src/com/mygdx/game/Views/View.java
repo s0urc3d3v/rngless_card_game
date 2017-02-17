@@ -17,4 +17,5 @@ public abstract class View {
 
     //Initialise objects in this function
     public abstract void create();
+
 }

@@ -1,36 +1,17 @@
 package com.mygdx.game.Views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.tools.texturepacker.TexturePacker;
-import com.badlogic.gdx.utils.Scaling;
-import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.mygdx.game.Controller;
 import com.mygdx.game.Game;
 import com.mygdx.game.UI.SimpleButton;
-import com.mygdx.game.textureAtlases.CardAtlas;
 
-import java.util.ArrayList;
-
-
-public class Board extends View {
-    private ShapeRenderer shapeRenderer = new ShapeRenderer();
+public class Board extends View implements ViewSwitchListener {
     private Stage stage;
     private SpriteBatch spriteBatch;
 
@@ -43,10 +24,10 @@ public class Board extends View {
         Gdx.gl.glClearColor(255/255f,102/255f,102/255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.draw();
-        ArrayList<Texture> cardTexture = CardAtlas.getCards();
-        spriteBatch.begin();
+//        ArrayList<Texture> cardTexture = CardAtlas.getCards();
+//        spriteBatch.begin();
        // spriteBatch.draw(null, 100, 100);
-        spriteBatch.end();
+//        spriteBatch.end();
     }
 
     @Override
@@ -56,23 +37,21 @@ public class Board extends View {
 
     @Override
     public Game.viewIndexes update() {
-        //Don't switch off Home by default
+        //Return the index of the window we want to switch to next
         return returnIndex;
     }
 
     @Override
     public void create() {
+        //Tell us when switching methods
+       Controller.attachListener(this);
 
        stage = new Stage();
-       //Gdx.input.setInputProcessor(stage);
        backButton = new SimpleButton("Go Back");
        backButton.addListener(new ClickListener() {
-
            @Override
            public void clicked(InputEvent event, float x, float y) {
                returnIndex = Game.viewIndexes.HOME;
-               update();
-               Controller.callViewSwitch();
            }
        });
        Table table = new Table();
@@ -84,7 +63,17 @@ public class Board extends View {
         t.setFillParent(true);
         t.center().center();
         t.row();
-        t.add(backButton).pad(10);
-        spriteBatch = new SpriteBatch();
+        t.add(backButton);
+    }
+
+    @Override
+    public void onSwitch(int switchingToIndex) {
+        if(switchingToIndex == Game.viewIndexes.BOARD.getValue()) {
+            //Then we should be taking the input now
+            Gdx.input.setInputProcessor(stage);
+        } else {
+            //We are switching off this screen and should make sure to set back our return index
+            returnIndex = Game.viewIndexes.BOARD;
+        }
     }
 }

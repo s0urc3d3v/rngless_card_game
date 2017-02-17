@@ -19,7 +19,7 @@ public class Home extends View implements ViewSwitchListener {
     private SimpleButton settingsButton;
     private SimpleButton quitButton;
 
-    Game.viewIndexes nextViewIndex = Game.viewIndexes.HOME;
+    Game.viewIndexes returnIndex = Game.viewIndexes.HOME;
 
     @Override
     public void render() {
@@ -34,7 +34,7 @@ public class Home extends View implements ViewSwitchListener {
     @Override
     public Game.viewIndexes update() {
         //Don't switch off Home by default
-        return nextViewIndex;
+        return returnIndex;
     }
 
     @Override
@@ -50,8 +50,7 @@ public class Home extends View implements ViewSwitchListener {
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                nextViewIndex = Game.viewIndexes.BOARD;
-                update();
+                returnIndex = Game.viewIndexes.BOARD;
             }
         });
         customButton = new SimpleButton("Customize Deck");
@@ -85,8 +84,13 @@ public class Home extends View implements ViewSwitchListener {
 
     @Override
     public void onSwitch(int switchingToIndex) {
-        //Set us back to our current pane
-        //This is so we do not switch away when returning to home.
-        nextViewIndex = Game.viewIndexes.HOME;
+        if(switchingToIndex == Game.viewIndexes.HOME.getValue()) {
+            //This switch is to our view
+            //Then we should be taking the input now
+            Gdx.input.setInputProcessor(stage);
+        } else {
+            //We are switching off this screen and should make sure to set back our return index
+            returnIndex = Game.viewIndexes.HOME;
+        }
     }
 }
