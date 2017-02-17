@@ -38,7 +38,7 @@ public class Home extends View implements ViewSwitchListener {
         //Set us as the default input processor, as this is the primary view.
         Gdx.input.setInputProcessor(stage);
 
-        //Create a simple Play button
+        //Create a simple menu buttons
         playButton = new SimpleButton("Play");
         playButton.addListener(new ClickListener() {
             @Override
