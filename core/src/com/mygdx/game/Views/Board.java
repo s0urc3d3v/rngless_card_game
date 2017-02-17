@@ -1,29 +1,25 @@
 package com.mygdx.game.Views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.mygdx.game.Controller;
 import com.mygdx.game.Game;
 import com.mygdx.game.UI.SimpleButton;
 
 public class Board extends View implements ViewSwitchListener {
-    private SpriteBatch spriteBatch;
+    private SpriteBatch spriteBatch = new SpriteBatch();
     private SimpleButton backButton;
 
     @Override
     public void render() {
-        Gdx.gl.glClearColor(255/255f,102/255f,102/255f, 1);
+        Gdx.gl.glClearColor(255 / 255f, 102 / 255f, 102 / 255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.draw();
-//        ArrayList<Texture> cardTexture = CardAtlas.getCards();
-//        spriteBatch.begin();
-       // spriteBatch.draw(null, 100, 100);
-//        spriteBatch.end();
+
+
     }
 
     @Override

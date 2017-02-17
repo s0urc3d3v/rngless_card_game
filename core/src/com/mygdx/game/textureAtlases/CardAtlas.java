@@ -18,8 +18,10 @@ public class CardAtlas {
         File[] files = new File(System.getProperty("user.dir") + File.separator + "assets" + File.separator + "Cards").listFiles();
 
         //Adds all the card imgs to an array list as textures
-        for (int i = 0; i < files.length; i++) {
-            skins.add(new Texture(Gdx.files.internal(files[i].getPath())));
+        if (files != null) {
+            for (int i = 0; i < files.length; i++) {
+                skins.add(new Texture(Gdx.files.internal(files[i].getPath())));
+            }
         }
     }
 
