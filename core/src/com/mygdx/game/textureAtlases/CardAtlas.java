@@ -14,6 +14,7 @@ public class CardAtlas {
     public static ArrayList<Texture> skins = new ArrayList<>();
 
     static {
+        //EVERYTHING HERE WILL BE REPLACED, maybe ? :)
         //Gets a list a files in the Cards asset directory
         File[] files = new File(System.getProperty("user.dir") + File.separator + "assets" + File.separator + "Cards").listFiles();
 
