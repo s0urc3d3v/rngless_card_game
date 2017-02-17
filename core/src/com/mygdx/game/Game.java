@@ -6,14 +6,11 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.mygdx.game.Views.Board;
-import com.mygdx.game.Views.CardSelector;
-import com.mygdx.game.Views.Home;
-import com.mygdx.game.Views.View;
+import com.mygdx.game.Views.*;
 
 public class Game extends ApplicationAdapter {
 
-	View[] views = new View[3];
+	View[] views = new View[4];
 	int currentViewIndex = viewIndexes.HOME.getValue();
 
 	@Override
@@ -24,6 +21,8 @@ public class Game extends ApplicationAdapter {
 		views[viewIndexes.CARDSELECTOR.getValue()] = new CardSelector();
 		views[viewIndexes.BOARD.getValue()] = new Board(); //Dont set a default board.
 		views[viewIndexes.BOARD.getValue()].create();
+		views[viewIndexes.SETTINGS.getValue()] = new Settings();
+		views[viewIndexes.SETTINGS.getValue()].create();
 	}
 
 	@Override
@@ -57,7 +56,8 @@ public class Game extends ApplicationAdapter {
 	public enum viewIndexes {
 		HOME(0),
 		CARDSELECTOR(1),
-		BOARD(2);
+		BOARD(2),
+		SETTINGS(3);
 
 		private final int value;
 		viewIndexes(int value) {

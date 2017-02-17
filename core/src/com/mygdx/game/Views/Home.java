@@ -48,6 +48,11 @@ public class Home extends View implements ViewSwitchListener {
         });
         customButton = new SimpleButton("Customize Deck");
         settingsButton = new SimpleButton("Settings");
+        settingsButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                returnIndex = Game.viewIndexes.SETTINGS;
+            }
+        });
         quitButton = new SimpleButton("Quit");
 
         quitButton.addListener(new ClickListener() {

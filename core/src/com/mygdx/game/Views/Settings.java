@@ -28,10 +28,16 @@ public class Settings extends View implements ViewSwitchListener {
     @Override
     public void create() {
         super.create();
-        ShapeRenderer shapeRenderer = new ShapeRenderer();
+      /*  ShapeRenderer shapeRenderer = new ShapeRenderer();
         shapeRenderer.begin();
         shapeRenderer.rect(100, 100, 100, 100);
-        shapeRenderer.end();
+        shapeRenderer.end();*/
+    }
+
+    @Override
+    public void onSwitch(int switchingToIndex) {
+        super.onSwitch(switchingToIndex);
+        returnIndex = Game.viewIndexes.SETTINGS;
     }
 }
 
