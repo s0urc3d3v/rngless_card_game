@@ -1,36 +1,44 @@
 package com.mygdx.game.Cards;
 
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Pool;
 
 public abstract class Card implements Pool.Poolable {
+    //The unique identifier of the card
+    private int cardHash;
+    //The name of the image to use on for the card texture
+    private String textureName;
+    private int target;
     private int cost;
     private int manaPoisoning;
-    private int target;  //0 if immune, 1 if it can be targeted
-    Texture cardImg = null; //This must be loaded with a batch
+    private static TextureAtlas cardAtlas;
 
+    static {
+        //Load all the cards into one texture atlas that was pre-packed before the program started.
+        cardAtlas = new TextureAtlas(Gdx.files.internal("packed_textures/cards/allcards.atlas"));
+    }
 
     //Default Constructor
     public Card() {
-        this.cost = 0;
-        this.manaPoisoning = 0;
+        target = 0;
+        cost = 0;
+        manaPoisoning = 0;
     }
 
-    /**
-     * YOU NEED TO OVERRIDE THIS METHOD AND IMPLEMENT IT FOR SUBCLASSES
-     * All subclasses must have a init method that acts as a constructor
-     * This allows them to poolable
-     * @param arg: A variable number of integers that get passed in for arguments.
-     *           1. Cost
-     *           2. manaPoisoning
-     *           3. Targetability
-     */
-    public void init(int... arg) {
-        cost = arg[0];
-        manaPoisoning = arg[1];
-        target = arg[2];
+    //cardHash will help to find the card in the xml files.
+    public void init(int cardHash) {
+        this.cardHash = cardHash;
     }
 
+    private void loadCard() {
+
+    }
+
+    public TextureAtlas.AtlasRegion getTexture() {
+        return cardAtlas.findRegion(textureName);
+    }
 
     @Override
     public abstract void reset();

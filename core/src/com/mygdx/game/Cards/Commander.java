@@ -4,27 +4,15 @@ import com.mygdx.game.Player;
 
 public class Commander extends Minion {
 
-    Player myPlayer;
-
-    private int attack;
+    Player player;
 
     public Commander() {
         super();
-        attack=0;
-
     }
 
-    /**
-     * @param arg is a list of integers
-     *            1. manaCost
-     *            2. manaPoison
-     *            3. Target - should be immune
-     *            4. health
-     *            5. attack
-     */
     @Override
-    public void init(int... arg) {
-        super.init(arg);
+    public void init(int cardHash, int health, int attack) {
+        super.init(cardHash, health, attack);
     }
 
     @Override
@@ -53,13 +41,12 @@ public class Commander extends Minion {
     }
     // Minion stuff
     public void takeDamage(int damageTaken){
-        myPlayer.Health= myPlayer.Health-damageTaken;
+        player.Health = player.Health-damageTaken;
     }
 
     // Connects commander to player
-    public void connectToPlayer(Player Jesus){
-        myPlayer = Jesus;
-
+    public void connectToPlayer(Player other){
+        player = other;
     }
 
 }

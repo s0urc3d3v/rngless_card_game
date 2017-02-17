@@ -1,3 +1,5 @@
+package com.mygdx.game.Tests;
+
 import com.mygdx.game.Views.Settings;
 import junit.framework.TestCase;
 

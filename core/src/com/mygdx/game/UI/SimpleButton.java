@@ -23,7 +23,7 @@ public class SimpleButton extends TextButton {
     //Make the stuff that all simple buttons need.
     static {
         //Load up the texture atlas in the form of a skin
-        skin = new Skin(Gdx.files.internal("shadeui/uiskin.json"));
+        skin = new Skin(Gdx.files.internal("packed_textures/shadeui/uiskin.json"));
 
         //Set states for various textures
         tbs.up = skin.getDrawable("button");
