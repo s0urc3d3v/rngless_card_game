@@ -1,5 +1,7 @@
 package com.mygdx.game.Cards;
 
+import com.badlogic.gdx.utils.XmlReader;
+
 public class Spell extends Card {
 
 
@@ -8,8 +10,13 @@ public class Spell extends Card {
     }
 
     @Override
-    public void init(int cardHash) {
+    public void init(String cardHash) {
         super.init(cardHash);
+    }
+
+    @Override
+    void loadSubCardAttribs(XmlReader.Element cardAttributeElement) {
+        //load our custom attributes.
     }
 
 

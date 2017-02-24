@@ -1,5 +1,7 @@
 package com.mygdx.game.Cards;
 
+import com.badlogic.gdx.utils.XmlReader;
+
 public class Minion extends Card {
 
     private int currentHealth;
@@ -13,10 +15,15 @@ public class Minion extends Card {
         currentHealth = 0;
     }
 
-    public void init(int cardHash, int health, int attack) {
+    public void init(String cardHash) {
         super.init(cardHash);
-        this.health = health;
-        this.attack = attack;
+    }
+
+    @Override
+    void loadSubCardAttribs(XmlReader.Element cardAttributeElement) {
+        //Loading in our custom Attributes for this sub-card
+        health = Integer.valueOf(cardAttributeElement.get("health"));
+        attack = Integer.valueOf(cardAttributeElement.get("attack"));
     }
 
     @Override

@@ -11,8 +11,8 @@ public class Commander extends Minion {
     }
 
     @Override
-    public void init(int cardHash, int health, int attack) {
-        super.init(cardHash, health, attack);
+    public void init(String cardHash) {
+        super.init(cardHash);
     }
 
     @Override
