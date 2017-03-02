@@ -58,7 +58,7 @@ public class Settings extends View implements ViewSwitchListener {
                     DatabaseTool.addPreference("AA", false);
                 }
             }
-        }
+        });
 
         Table table = new Table();
         assembleTable(table);
