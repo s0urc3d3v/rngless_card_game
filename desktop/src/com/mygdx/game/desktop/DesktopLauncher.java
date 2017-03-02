@@ -14,7 +14,7 @@ import java.io.*;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
-//		TexturePacker.process("raw_textures", "packed_textures/cards", "allcards");
+		TexturePacker.process("raw_textures", "packed_textures/cards", "allcards");
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		new LwjglApplication(new Game(), config);
 	}
