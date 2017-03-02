@@ -1,5 +1,6 @@
 package com.mygdx.game.Core;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.io.*;
 import java.util.*;
@@ -150,6 +151,14 @@ public class DatabaseTool {
      */
     public static void appendKeyPairToFile(String key, boolean value) throws IOException {
         writer.append(key).append(":").append(String.valueOf(value));
+    }
+
+    public static void updatePreference(String key){
+        for (int i = 0; i < prefs.size(); i++) {
+                if (getKeyWithIndexFromMap(i).equals(key)){
+                    prefs.put(getKeyWithIndexFromMap(i), !getPreference(key));
+            }
+        }
     }
 }
 

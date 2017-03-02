@@ -16,7 +16,7 @@ import java.io.IOException;
  * Created by matthewelbing on 21.02.17.
  */
 public class ResourceFetcher { //If null is returned the string does not exist
-    private String getString(String key) {
+    public static String getString(String key) {
     try
 
     {
