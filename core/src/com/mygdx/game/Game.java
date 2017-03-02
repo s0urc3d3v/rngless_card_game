@@ -31,7 +31,7 @@ public class Game extends ApplicationAdapter {
 
 		//Clear the screen
 		Gdx.gl.glClearColor(65/255f,105/255f,225/255f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | (Gdx.graphics.getBufferFormat().coverageSampling?GL20.GL_COVERAGE_BUFFER_BIT_NV:0));
 
 		//Call the current views update.
 		currentViewIndex = views[currentViewIndex].update().getValue();
