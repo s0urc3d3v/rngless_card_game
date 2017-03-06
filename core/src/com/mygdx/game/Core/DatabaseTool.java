@@ -1,5 +1,9 @@
 package com.mygdx.game.Core;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.oracle.tools.packager.IOUtils;
+
 import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.io.*;
@@ -14,18 +18,29 @@ public class DatabaseTool {
      */
     static LinkedHashMap<String, Boolean> prefs = new LinkedHashMap<>();
     private static String fileName = "settings";
-    private static BufferedReader reader;
+    private static InputStream reader;
     private static BufferedWriter writer;
     public static void init(){
         try {
-            reader = new BufferedReader(new FileReader(fileName));
-            reader.mark(0);
-            writer = new BufferedWriter(new FileWriter(fileName));
+            boolean storageAvaible = Gdx.files.isLocalStorageAvailable();
+            String path = Gdx.files.getLocalStoragePath();
+
+            FileHandle fileHandle = Gdx.files.internal("data/settings.txt");
+            if (!fileHandle.exists()){
+                fileHandle.file().createNewFile();
+            }
+            reader = fileHandle.read();
+
 
             updatePreferencesFromFile();
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch(Exception e){
+                e.printStackTrace();
+            }
         }
+
+    private static String inputStreamConverter(InputStream inputStream){
+        Scanner scanner = new Scanner(inputStream).useDelimiter("\\A");
+        return scanner.hasNext() ? scanner.next() : "";
     }
 
     /**
@@ -51,7 +66,7 @@ public class DatabaseTool {
         boolean shouldContinue = true;
         String line = "";
         while (shouldContinue){
-            line = reader.readLine();
+            line = reader
             if (line == null)
                 shouldContinue = false;
             else
