@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.DistanceFieldFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeType;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
@@ -18,22 +19,24 @@ public class SimpleButton extends TextButton {
     protected static BitmapFont font;
     protected static Skin skin;
     protected static TextButton.TextButtonStyle tbs = new TextButton.TextButtonStyle();
+    private static int fontSize = 25;
 
 
     //Make the stuff that all simple buttons need.
     static {
         //Load up the texture atlas in the form of a skin
-        skin = new Skin(Gdx.files.internal("packed_textures/shadeui/uiskin.json"));
+        skin = new Skin(new TextureAtlas(Gdx.files.internal("packed_textures/buttons/buttons.atlas")));
 
         //Set states for various textures
-        tbs.up = skin.getDrawable("button");
-        tbs.down = skin.getDrawable("button-down");
+        tbs.up = skin.getDrawable("Button Aqua - UP");
+        tbs.down = skin.getDrawable("Button Aqua - DOWN");
         //free type font
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/open-sans/OpenSans-Regular.ttf"));
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/ancient/Ancient_Medium.ttf"));
         //Defaults to size 16 font
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.minFilter = Texture.TextureFilter.Linear;
         parameter.magFilter = Texture.TextureFilter.Linear;
+        parameter.size = fontSize;
 
         font = generator.generateFont(parameter);
         generator.dispose();

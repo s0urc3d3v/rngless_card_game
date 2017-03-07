@@ -1,0 +1,174 @@
+
+buttons.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Button Aqua - DOWN
+  rotate: false
+  xy: 287, 2
+  size: 131, 74
+  orig: 131, 74
+  offset: 0, 0
+  index: -1
+Button Aqua - UP
+  rotate: false
+  xy: 235, 78
+  size: 136, 78
+  orig: 136, 78
+  offset: 0, 0
+  index: -1
+Button Blue - DOWN
+  rotate: false
+  xy: 235, 291
+  size: 230, 131
+  orig: 230, 131
+  offset: 0, 0
+  index: -1
+Button Blue - UP
+  rotate: false
+  xy: 242, 745
+  size: 237, 136
+  orig: 237, 136
+  offset: 0, 0
+  index: -1
+Button Green - DOWN
+  rotate: false
+  xy: 2, 335
+  size: 231, 131
+  orig: 231, 131
+  offset: 0, 0
+  index: -1
+Button Green - UP
+  rotate: false
+  xy: 2, 745
+  size: 238, 136
+  orig: 238, 136
+  offset: 0, 0
+  index: -1
+Button Grey - DOWN
+  rotate: false
+  xy: 241, 475
+  size: 231, 131
+  orig: 231, 131
+  offset: 0, 0
+  index: -1
+Button Grey - UP
+  rotate: false
+  xy: 242, 883
+  size: 237, 137
+  orig: 237, 137
+  offset: 0, 0
+  index: -1
+Button Orange - DOWN
+  rotate: false
+  xy: 481, 750
+  size: 231, 132
+  orig: 231, 132
+  offset: 0, 0
+  index: -1
+Button Orange - UP
+  rotate: false
+  xy: 2, 468
+  size: 237, 136
+  orig: 237, 136
+  offset: 0, 0
+  index: -1
+Button Pink - DOWN
+  rotate: false
+  xy: 714, 751
+  size: 231, 131
+  orig: 231, 131
+  offset: 0, 0
+  index: -1
+Button Pink - UP
+  rotate: false
+  xy: 241, 608
+  size: 237, 135
+  orig: 237, 135
+  offset: 0, 0
+  index: -1
+Button Red - DOWN
+  rotate: false
+  xy: 2, 202
+  size: 231, 131
+  orig: 231, 131
+  offset: 0, 0
+  index: -1
+Button Red - UP
+  rotate: false
+  xy: 2, 883
+  size: 238, 137
+  orig: 238, 137
+  offset: 0, 0
+  index: -1
+Button Rusty - DOWN
+  rotate: false
+  xy: 2, 69
+  size: 231, 131
+  orig: 231, 131
+  offset: 0, 0
+  index: -1
+Button Rusty - UP
+  rotate: false
+  xy: 2, 606
+  size: 237, 137
+  orig: 237, 137
+  offset: 0, 0
+  index: -1
+Button White - DOWN
+  rotate: false
+  xy: 235, 158
+  size: 230, 131
+  orig: 230, 131
+  offset: 0, 0
+  index: -1
+Button White - UP
+  rotate: false
+  xy: 481, 884
+  size: 238, 136
+  orig: 238, 136
+  offset: 0, 0
+  index: -1
+Button Yellow - DOWN
+  rotate: false
+  xy: 481, 617
+  size: 230, 131
+  orig: 230, 131
+  offset: 0, 0
+  index: -1
+Button Yellow - UP
+  rotate: false
+  xy: 721, 884
+  size: 238, 136
+  orig: 238, 136
+  offset: 0, 0
+  index: -1
+ButtonDown
+  rotate: false
+  xy: 2, 15
+  size: 283, 52
+  orig: 283, 52
+  offset: 0, 0
+  index: -1
+ButtonPurple-Down
+  rotate: false
+  xy: 420, 2
+  size: 131, 74
+  orig: 131, 74
+  offset: 0, 0
+  index: -1
+ButtonPurple-Up
+  rotate: false
+  xy: 373, 78
+  size: 136, 78
+  orig: 136, 78
+  offset: 0, 0
+  index: -1
+ButtonUp
+  rotate: false
+  xy: 241, 424
+  size: 283, 49
+  orig: 283, 49
+  offset: 0, 0
+  index: -1

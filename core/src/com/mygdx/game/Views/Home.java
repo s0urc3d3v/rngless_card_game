@@ -74,7 +74,7 @@ public class Home extends View implements ViewSwitchListener {
         table.center().center();
         table.add(playButton).padBottom(10);
         table.row();
-        table.add(customButton).padBottom(10);
+        table.add(customButton).width(175).padBottom(10);
         table.row();
         table.add(settingsButton).padBottom(10);
         table.row();
