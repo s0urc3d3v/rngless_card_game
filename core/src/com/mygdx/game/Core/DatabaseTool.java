@@ -66,7 +66,7 @@ public class DatabaseTool {
         boolean shouldContinue = true;
         String line = "";
         while (shouldContinue){
-            line = reader
+            line = null;
             if (line == null)
                 shouldContinue = false;
             else
@@ -140,7 +140,7 @@ public class DatabaseTool {
     public static int getLineCountInDB() throws IOException{
         int count = 0;
         reader.reset();
-        while (reader.readLine() != null) count++;
+        //while (reader.readLine() != null) count++;
         return count;
     }
 

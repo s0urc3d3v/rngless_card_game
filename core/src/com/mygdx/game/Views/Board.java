@@ -2,8 +2,13 @@ package com.mygdx.game.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.game.Cards.Card;
@@ -16,13 +21,17 @@ public class Board extends View implements ViewSwitchListener {
     private SimpleButton backButton;
 
     private Card testCard;
+    private Texture background = new Texture(Gdx.files.internal("raw_textures/temp board.png"));
+    private TextureRegion tr = new TextureRegion(background, 0, 0, 960, 720);
 
     @Override
     public void render() {
         Gdx.gl.glClearColor(255 / 255f, 102 / 255f, 102 / 255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+       // background.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         spriteBatch.begin();
-        spriteBatch.draw(testCard.getTexture(), 0, 0, 100, 150);
+        spriteBatch.draw(tr, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        //spriteBatch.draw(testCard.getTexture(), 0, 0, 100, 150);
         spriteBatch.end();
 
         stage.draw();
@@ -63,6 +72,7 @@ public class Board extends View implements ViewSwitchListener {
         t.center().center();
         t.row();
         t.add(backButton);
+        t.row();
     }
 
     @Override
