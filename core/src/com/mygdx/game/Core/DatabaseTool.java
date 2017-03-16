@@ -140,7 +140,7 @@ public class DatabaseTool {
     public static int getLineCountInDB() throws IOException{
         int count = 0;
         reader.reset();
-        //while (reader.readLine() != null) count++;
+            //while (reader.readLine() != null) count++;
         return count;
     }
 
