@@ -1,46 +1,27 @@
 package com.mygdx.game.Core;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.oracle.tools.packager.IOUtils;
-
-import javax.xml.crypto.Data;
-import java.io.IOException;
 import java.io.*;
 import java.util.*;
+
 /**
- * Created by matthewelbing on 17.02.17.
+ * Created by s0urc3d3v3l0pm3nt on 1/20/2016.
  */
 public class DatabaseTool {
-
-    /**
-     * Created by s0urc3d3v3l0pm3nt on 1/20/2016.
-     */
     static LinkedHashMap<String, Boolean> prefs = new LinkedHashMap<>();
-    private static String fileName = "settings";
-    private static InputStream reader;
+    private static String fileName = "";
+    private static BufferedReader reader;
     private static BufferedWriter writer;
     public static void init(){
+        fileName = System.getProperty("user.dir") + File.separator + "data" + File.separator + "settings.txt";
         try {
-            boolean storageAvaible = Gdx.files.isLocalStorageAvailable();
-            String path = Gdx.files.getLocalStoragePath();
-
-            FileHandle fileHandle = Gdx.files.internal("data/settings.txt");
-            if (!fileHandle.exists()){
-                fileHandle.file().createNewFile();
-            }
-            reader = fileHandle.read();
-
+            reader = new BufferedReader(new FileReader(fileName));
+            reader.mark(0);
+            writer = new BufferedWriter(new FileWriter(fileName));
 
             updatePreferencesFromFile();
-            } catch(Exception e){
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-    private static String inputStreamConverter(InputStream inputStream){
-        Scanner scanner = new Scanner(inputStream).useDelimiter("\\A");
-        return scanner.hasNext() ? scanner.next() : "";
     }
 
     /**
@@ -66,7 +47,7 @@ public class DatabaseTool {
         boolean shouldContinue = true;
         String line = "";
         while (shouldContinue){
-            line = null;
+            line = reader.readLine();
             if (line == null)
                 shouldContinue = false;
             else
@@ -140,7 +121,7 @@ public class DatabaseTool {
     public static int getLineCountInDB() throws IOException{
         int count = 0;
         reader.reset();
-            //while (reader.readLine() != null) count++;
+        while (reader.readLine() != null) count++;
         return count;
     }
 
@@ -167,13 +148,10 @@ public class DatabaseTool {
     public static void appendKeyPairToFile(String key, boolean value) throws IOException {
         writer.append(key).append(":").append(String.valueOf(value));
     }
-
-    public static void updatePreference(String key){
-        for (int i = 0; i < prefs.size(); i++) {
-                if (getKeyWithIndexFromMap(i).equals(key)){
-                    prefs.put(getKeyWithIndexFromMap(i), !getPreference(key));
-            }
-        }
+    public static void updatePref(String prefName, boolean value){
+        prefs.put(prefName, value);
     }
-}
 
+
+
+}
