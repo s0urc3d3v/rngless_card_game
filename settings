@@ -1,1 +1,20 @@
-a
+ public static void init(){
+        try {
+            boolean storageAvaible = Gdx.files.isLocalStorageAvailable();
+            String path = Gdx.files.getLocalStoragePath();
+
+            FileHandle fileHandle = Gdx.files.internal("data/settings.txt");
+            reader = fileHandle.read();
+
+
+            updatePreferencesFromFile();
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+            prefs.
+        }
+
+    private static String inputStreamConverter(InputStream inputStream){
+        Scanner scanner = new Scanner(inputStream).useDelimiter("\\A");
+        return scanner.hasNext() ? scanner.next() : "";
+    }
