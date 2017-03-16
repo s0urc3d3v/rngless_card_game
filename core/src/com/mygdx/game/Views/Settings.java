@@ -52,10 +52,15 @@ public class Settings extends View implements ViewSwitchListener {
             public void clicked(InputEvent event, float x, float y){
                 DatabaseTool.init();
                 if (DatabaseTool.getPreference("AA") != null){
-                    DatabaseTool.updatePreference("AA");
+                    DatabaseTool.updatePref("AA", !DatabaseTool.getPreference("AA"));
                 }
                 else {
                     DatabaseTool.addPreference("AA", false);
+                }
+                try {
+                    DatabaseTool.recreateFileDatabase();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });
