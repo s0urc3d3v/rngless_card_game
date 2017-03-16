@@ -1,6 +1,7 @@
 package com.mygdx.game.Views;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -22,16 +23,16 @@ public class Board extends View implements ViewSwitchListener {
 
     private Card testCard;
     private Texture background = new Texture(Gdx.files.internal("raw_textures/temp board.png"));
-    private TextureRegion tr = new TextureRegion(background, 0, 0, 960, 720);
+
+    private Camera camera;
 
     @Override
     public void render() {
         Gdx.gl.glClearColor(255 / 255f, 102 / 255f, 102 / 255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-       // background.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        refresh(spriteBatch);
         spriteBatch.begin();
-        spriteBatch.draw(tr, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        //spriteBatch.draw(testCard.getTexture(), 0, 0, 100, 150);
+        spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
         spriteBatch.end();
 
         stage.draw();
@@ -61,6 +62,7 @@ public class Board extends View implements ViewSwitchListener {
         Table table = new Table();
         assembleTable(table);
         stage.addActor(table);
+        camera = stage.getCamera();
 
         //TODO: Delete later
         testCard = new Minion();
@@ -79,5 +81,11 @@ public class Board extends View implements ViewSwitchListener {
     public void onSwitch(int switchingToIndex) {
         super.onSwitch(switchingToIndex);
         returnIndex = Game.viewIndexes.BOARD;
+    }
+
+    private void refresh(SpriteBatch sb) {
+        camera.update();
+        sb.setProjectionMatrix(camera.combined);
+        sb.getProjectionMatrix().setToOrtho2D(0, 0, stage.getWidth(), stage.getHeight());
     }
 }
