@@ -39,7 +39,7 @@ public class Board extends View implements ViewSwitchListener {
 
     @Override
     public void resize(int width, int height) {
-        stage.getViewport().update(width, height, true);
+        super.resize(width, height);
     }
 
     @Override
