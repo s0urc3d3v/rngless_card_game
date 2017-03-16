@@ -51,11 +51,11 @@ public class Settings extends View implements ViewSwitchListener {
         antialiasingToggle.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 DatabaseTool.init();
-                if (DatabaseTool.getPreference("AA") != null){
-                    DatabaseTool.updatePref("AA", !DatabaseTool.getPreference("AA"));
-                }
-                else {
+                Boolean current = DatabaseTool.getPreference("AA");
+                if (current == null)
                     DatabaseTool.addPreference("AA", false);
+                else {
+                    DatabaseTool.addPreference("AA", !current);
                 }
                 try {
                     DatabaseTool.recreateFileDatabase();

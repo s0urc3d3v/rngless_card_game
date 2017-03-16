@@ -148,9 +148,7 @@ public class DatabaseTool {
     public static void appendKeyPairToFile(String key, boolean value) throws IOException {
         writer.append(key).append(":").append(String.valueOf(value));
     }
-    public static void updatePref(String prefName, boolean value){
-        prefs.put(prefName, value);
-    }
+
 
 
 
