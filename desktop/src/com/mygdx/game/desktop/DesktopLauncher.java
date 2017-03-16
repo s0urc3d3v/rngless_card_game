@@ -14,8 +14,10 @@ import java.io.*;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
-		TexturePacker.process("raw_textures/buttons", "packed_textures/buttons", "buttons");
+//		TexturePacker.process("raw_textures/buttons", "packed_textures/buttons", "buttons");
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.fullscreen = true;
+		config.resizable = false;
 		new LwjglApplication(new Game(), config);
 	}
 }
