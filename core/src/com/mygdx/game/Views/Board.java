@@ -34,7 +34,6 @@ public class Board extends View implements ViewSwitchListener {
         spriteBatch.begin();
         spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
         spriteBatch.end();
-
         stage.draw();
     }
 
