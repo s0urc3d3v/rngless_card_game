@@ -7,19 +7,19 @@ import java.util.*;
  * Created by s0urc3d3v3l0pm3nt on 1/20/2016.
  */
 public class DatabaseTool {
-    static LinkedHashMap<String, Boolean> prefs = new LinkedHashMap<>();
+    private static LinkedHashMap<String, Boolean> prefs = new LinkedHashMap<>();
     private static String fileName = "";
     private static BufferedReader reader;
-    private static BufferedWriter writer;
+    private static PrintWriter writer;
     public static void init(){
         fileName = System.getProperty("user.dir") + File.separator + "data" + File.separator + "settings.txt";
         try {
             reader = new BufferedReader(new FileReader(fileName));
             reader.mark(0);
-            writer = new BufferedWriter(new FileWriter(fileName));
+            writer = new PrintWriter(new FileWriter(fileName, true));
 
             updatePreferencesFromFile();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
