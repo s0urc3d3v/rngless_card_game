@@ -1,9 +1,5 @@
 package com.mygdx.game.Views;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Matrix4;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.game.Controller;
 import com.mygdx.game.Game;
 
 public class CardSelector extends View implements ViewSwitchListener {
