@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 //import com.mygdx.game.Core.DatabaseTool;
+import com.mygdx.game.Core.DB_tool;
 import com.mygdx.game.Core.ResourceFetcher;
 import com.mygdx.game.Game;
 import com.mygdx.game.UI.SimpleButton;
@@ -50,19 +51,13 @@ public class Settings extends View implements ViewSwitchListener {
 
         antialiasingToggle.addListener(new ClickListener(){
             public void clicked(InputEvent event, float x, float y){
-               /* DatabaseTool.init();
-                Boolean current = DatabaseTool.getPreference("AA");
-                if (DatabaseTool.getPreference("AA") != null) {
-                    DatabaseTool.addPreference("AA", !(DatabaseTool.getPreference("AA")));
-                }
-                else {
-                    DatabaseTool.addPreference("AA", true);
-                }
-                try {
-                    DatabaseTool.recreateFileDatabase();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
+                DB_tool db_tool = new DB_tool();
+                Boolean aaStatus = (Boolean) db_tool.getPref("aa", "Boolean");
+                db_tool.addPref("aa", !aaStatus);
+                if (aaStatus) antialiasingToggle.setName(AAon);
+                else antialiasingToggle.setName(AAoff);
+                render();
+
             }
         });
 
