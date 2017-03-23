@@ -21,11 +21,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.*;
 import java.util.*;
-/**
- * Created by matthewelbing on 17.02.17.
- */
+
+
 public class Settings extends View implements ViewSwitchListener {
-    private SimpleButton antialiasingToggle;
+    private SimpleButton antialiasingToggle, gohome;
     private String AAon = "Antialising on";
     private String AAoff = "Antialising off";
     @Override
@@ -65,6 +64,14 @@ public class Settings extends View implements ViewSwitchListener {
                 }*/
             }
         });
+        gohome = new SimpleButton("Go Back");
+        gohome.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                returnIndex = Game.viewIndexes.HOME;
+            }
+        });
+
 
         Table table = new Table();
         assembleTable(table);
@@ -74,7 +81,9 @@ public class Settings extends View implements ViewSwitchListener {
     private void assembleTable(Table table){
         table.setFillParent(true);
         table.center().center();
-        table.add(antialiasingToggle);
+        table.add(antialiasingToggle).padBottom(10);
+        table.row();
+        table.add(gohome);
         table.row();
     }
 
