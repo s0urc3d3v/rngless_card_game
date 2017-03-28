@@ -20,6 +20,8 @@ public abstract class View implements ViewSwitchListener {
     public void resize(int width, int height) {
         if(stage != null) {
             stage.getViewport().update(width, height, true);
+
+
         }
     }
 

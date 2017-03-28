@@ -39,8 +39,8 @@ public class Board extends View implements ViewSwitchListener {
 
     @Override
     public void resize(int width, int height) {
+        super.resize(width, height);
         refresh(spriteBatch);
-        stage.getViewport().update(width, height, true);
     }
 
     @Override
@@ -68,6 +68,15 @@ public class Board extends View implements ViewSwitchListener {
         testCard.init("m0");
 
         background.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        //heir AA ist
+        DB_tool db_tool = new DB_tool();
+        if (db_tool.getPref("aa", "Boolean") == Boolean.TRUE) {
+            background.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        }
+        else {
+            background.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+            System.out.println("AA not applied");
+        }
     }
 
     private void assembleTable(Table t) {

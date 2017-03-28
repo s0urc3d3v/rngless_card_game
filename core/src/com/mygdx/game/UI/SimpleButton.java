@@ -12,7 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.mygdx.game.Core.DB_tool;
 import com.sun.javafx.webkit.EventLoopImpl;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 
 public class SimpleButton extends TextButton {
@@ -34,8 +36,19 @@ public class SimpleButton extends TextButton {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/ancient/Ancient_Medium.ttf"));
         //Defaults to size 16 font
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.minFilter = Texture.TextureFilter.Linear;
-        parameter.magFilter = Texture.TextureFilter.Linear;
+        //heir AA ist
+        DB_tool db_tool = new DB_tool();
+        if (db_tool.getPref("aa", "Boolean") == Boolean.TRUE){
+            parameter.minFilter = Texture.TextureFilter.Linear;
+            parameter.magFilter = Texture.TextureFilter.Linear;
+        }
+        else{
+            parameter.minFilter = Texture.TextureFilter.Nearest;
+            parameter.magFilter = Texture.TextureFilter.Nearest;
+            System.out.println("no AA aplied");
+        }
+
+
         parameter.size = fontSize;
 
         font = generator.generateFont(parameter);

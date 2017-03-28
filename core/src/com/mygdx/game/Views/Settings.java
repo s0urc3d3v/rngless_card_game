@@ -6,7 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.mygdx.game.Core.DatabaseTool;
+//import com.mygdx.game.Core.DatabaseTool;
+import com.mygdx.game.Core.DB_tool;
 import com.mygdx.game.Core.ResourceFetcher;
 import com.mygdx.game.Game;
 import com.mygdx.game.UI.SimpleButton;
@@ -21,13 +22,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.*;
 import java.util.*;
-/**
- * Created by matthewelbing on 17.02.17.
- */
+
+
 public class Settings extends View implements ViewSwitchListener {
-    private SimpleButton antialiasingToggle;
-    private String AAon = "Antialising on";
-    private String AAoff = "Antialising off";
+    private SimpleButton antialiasingToggle, gohome;
+    private String AA = "Antialising";
     @Override
     public void render() {
         stage.draw();
@@ -45,25 +44,25 @@ public class Settings extends View implements ViewSwitchListener {
     @Override
     public void create() {
         super.create();
-
-        antialiasingToggle = new SimpleButton(AAon); //On by default
-
-        antialiasingToggle.addListener(new ClickListener(){
+        DB_tool db_tool = new DB_tool();
+        if ((db_tool.getPref("aa", "Boolean")) == null) antialiasingToggle = new SimpleButton(AA); //On by default
+        else antialiasingToggle = new SimpleButton(AA + " " + db_tool.getPref("aa", "Boolean").toString());
+        antialiasingToggle.addListener(new  ClickListener(){
             public void clicked(InputEvent event, float x, float y){
-                DatabaseTool.init();
-                if (DatabaseTool.getPreference("AA") != null){
-                    DatabaseTool.updatePref("AA", !DatabaseTool.getPreference("AA"));
-                }
-                else {
-                    DatabaseTool.addPreference("AA", false);
-                }
-                try {
-                    DatabaseTool.recreateFileDatabase();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                DB_tool db_tool = new DB_tool();
+                Boolean aaStatus = (Boolean) db_tool.getPref("aa", "Boolean");
+                db_tool.addPref("aa", !aaStatus);
+
             }
         });
+        gohome = new SimpleButton("Go Back");
+        gohome.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                returnIndex = Game.viewIndexes.HOME;
+            }
+        });
+
 
         Table table = new Table();
         assembleTable(table);
@@ -73,7 +72,9 @@ public class Settings extends View implements ViewSwitchListener {
     private void assembleTable(Table table){
         table.setFillParent(true);
         table.center().center();
-        table.add(antialiasingToggle);
+        table.add(antialiasingToggle).padBottom(10);
+        table.row();
+        table.add(gohome);
         table.row();
     }
 
