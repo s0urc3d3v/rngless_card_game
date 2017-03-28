@@ -32,6 +32,7 @@ public class Board extends View implements ViewSwitchListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
         spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
+        spriteBatch.draw(testCard.getTexture(), 0.0f, 0.0f);
         spriteBatch.end();
         stage.draw();
     }
@@ -62,6 +63,9 @@ public class Board extends View implements ViewSwitchListener {
         assembleTable(table);
         stage.addActor(table);
         camera = stage.getCamera();
+
+        testCard = new Minion();
+        testCard.init("m0");
 
         background.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
