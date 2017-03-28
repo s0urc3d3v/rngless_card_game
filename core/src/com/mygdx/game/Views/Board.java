@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.game.Cards.Card;
 import com.mygdx.game.Cards.Minion;
+import com.mygdx.game.Core.DB_tool;
 import com.mygdx.game.Game;
 import com.mygdx.game.UI.SimpleButton;
 
