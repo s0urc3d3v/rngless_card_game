@@ -26,8 +26,7 @@ import java.util.*;
 
 public class Settings extends View implements ViewSwitchListener {
     private SimpleButton antialiasingToggle, gohome;
-    private String AAon = "Antialising on";
-    private String AAoff = "Antialising off";
+    private String AA = "Antialising";
     @Override
     public void render() {
         stage.draw();
@@ -45,17 +44,14 @@ public class Settings extends View implements ViewSwitchListener {
     @Override
     public void create() {
         super.create();
-
-        antialiasingToggle = new SimpleButton(AAon); //On by default
-
-        antialiasingToggle.addListener(new ClickListener(){
+        DB_tool db_tool = new DB_tool();
+        if ((db_tool.getPref("aa", "Boolean")) == null) antialiasingToggle = new SimpleButton(AA); //On by default
+        else antialiasingToggle = new SimpleButton(AA + " " + db_tool.getPref("aa", "Boolean").toString());
+        antialiasingToggle.addListener(new  ClickListener(){
             public void clicked(InputEvent event, float x, float y){
                 DB_tool db_tool = new DB_tool();
                 Boolean aaStatus = (Boolean) db_tool.getPref("aa", "Boolean");
                 db_tool.addPref("aa", !aaStatus);
-                if (aaStatus) antialiasingToggle.setName(AAon);
-                else antialiasingToggle.setName(AAoff);
-                render();
 
             }
         });

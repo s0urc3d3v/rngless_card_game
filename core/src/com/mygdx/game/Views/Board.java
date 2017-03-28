@@ -22,7 +22,7 @@ public class Board extends View implements ViewSwitchListener {
     private SpriteBatch spriteBatch = new SpriteBatch();
     private SimpleButton backButton;
 
-    private Card testCard;
+    private Card card_one;
     private Texture background = new Texture(Gdx.files.internal("raw_textures/temp board.png"));
 
     private Camera camera;
