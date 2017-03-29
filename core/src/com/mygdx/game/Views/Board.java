@@ -12,21 +12,25 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Pool;
 import com.mygdx.game.Cards.Card;
 import com.mygdx.game.Cards.Minion;
 import com.mygdx.game.Core.DB_tool;
+import com.mygdx.game.Deck;
 import com.mygdx.game.Game;
 import com.mygdx.game.UI.SimpleButton;
 
 public class Board extends View implements ViewSwitchListener {
     private SpriteBatch spriteBatch = new SpriteBatch();
     private SimpleButton backButton;
+    private Pool<Card> cardPool;
 
     private Card testCard;
     private Texture background = new Texture(Gdx.files.internal("raw_textures/temp board.png"));
     private Texture ManaStage, Manaf, Manae;
 
     private Camera camera;
+    private Deck playerDeck, opponentDeck;
 
     @Override
     public void render() {
@@ -85,6 +89,10 @@ public class Board extends View implements ViewSwitchListener {
             background.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
             System.out.println("AA not applied");
         }
+
+        //Creating the two decks
+        playerDeck = new Deck(cardPool);
+        opponentDeck = new Deck(cardPool);
     }
 
     private void assembleTable(Table t) {
