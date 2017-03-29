@@ -92,7 +92,7 @@ public class Board extends View implements ViewSwitchListener {
         t.setFillParent(true);
         t.center().center();
         t.row();
-        t.add(backButton);
+        t.add(backButton).width(80f).height(50f);
         t.row();
     }
 

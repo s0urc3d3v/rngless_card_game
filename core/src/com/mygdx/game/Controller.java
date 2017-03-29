@@ -18,6 +18,11 @@ public class Controller {
     private static playTurnStages currentTurnState = playTurnStages.playOne;
     private static boolean playerOneTurn = true;
     private static boolean shouldChangePlayer = false;
+    private static Player[] players = new Player[2];
+    public Controller(Player playerOne, Player playerTwo){
+        players[0] = playerOne;
+        players[1] = playerTwo;
+    }
 
     private static List<ViewSwitchListener> viewSwitchListeners = new ArrayList<>();
 
@@ -61,6 +66,11 @@ public class Controller {
             }
             currentTurnState = turnStages[currentStateIndex + 1];
         }
+    }
+
+    public Player getCurrentPlayer(){
+        if (playerOneTurn) return players[0];
+        else return players[1];
     }
 
 
