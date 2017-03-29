@@ -41,7 +41,7 @@ public class Commander extends Minion {
     }
     // Minion stuff
     public void takeDamage(int damageTaken){
-        player.Health = player.Health-damageTaken;
+        player.setHealth(player.getHealth()-damageTaken);
     }
 
     // Connects commander to player
