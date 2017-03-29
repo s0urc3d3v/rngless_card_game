@@ -39,8 +39,8 @@ public class Board extends View implements ViewSwitchListener {
         Gdx.gl.glClearColor(255 / 255f, 102 / 255f, 102 / 255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
-
         spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
+        renderMana();
       //  spriteBatch.draw(testCard.getTexture(), 0.0f, 0.0f);
         spriteBatch.end();
         stage.draw();
@@ -116,7 +116,8 @@ public class Board extends View implements ViewSwitchListener {
 
 
     private void renderMana() {
-
-        font.draw()
+        int mana = 10;
+        int mp = 0;
+        font.draw(spriteBatch, mana +" / " + mp, 0, 0);
     }
 }

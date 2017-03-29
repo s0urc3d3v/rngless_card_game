@@ -28,6 +28,10 @@ public class Player {
         return Fatigue;
     }
 
+    public void setHealth(int n) {
+        Health = n;
+    }
+
     public int getMana() {
         return Mana;
     }
