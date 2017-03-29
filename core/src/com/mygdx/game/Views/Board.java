@@ -37,7 +37,7 @@ public class Board extends View implements ViewSwitchListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
         spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
-        spriteBatch.draw(testCard.getTexture(), 0.0f, 0.0f);
+        spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
         spriteBatch.end();
         stage.draw();
     }
