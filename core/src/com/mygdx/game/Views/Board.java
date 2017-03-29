@@ -27,7 +27,6 @@ public class Board extends View implements ViewSwitchListener {
 
     private Card testCard;
     private Texture background = new Texture(Gdx.files.internal("raw_textures/temp board.png"));
-    private Texture ManaStage, Manaf, Manae;
 
     private Camera camera;
     private Deck playerDeck, opponentDeck;
@@ -39,7 +38,6 @@ public class Board extends View implements ViewSwitchListener {
         spriteBatch.begin();
 
         spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
-        renderMana();
       //  spriteBatch.draw(testCard.getTexture(), 0.0f, 0.0f);
         spriteBatch.end();
         stage.draw();
@@ -60,9 +58,6 @@ public class Board extends View implements ViewSwitchListener {
     @Override
     public void create() {
         super.create();
-        ManaStage = new Texture(Gdx.files.internal("raw_textures/mana/ManaStage.png"));
-        Manaf = new Texture(Gdx.files.internal("raw_textures/mana/Manaf.png"));
-        Manae = new Texture(Gdx.files.internal("raw_textures/mana/Manae.png"));
 
         backButton = new SimpleButton("Go Back");
         backButton.addListener(new ClickListener() {
@@ -117,6 +112,5 @@ public class Board extends View implements ViewSwitchListener {
 
 
     private void renderMana() {
-        spriteBatch.draw(ManaStage, 0, -50, 250, 250);
     }
 }
