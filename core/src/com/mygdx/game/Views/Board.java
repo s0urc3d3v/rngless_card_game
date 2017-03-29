@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -24,6 +25,8 @@ public class Board extends View implements ViewSwitchListener {
     private SpriteBatch spriteBatch = new SpriteBatch();
     private SimpleButton backButton;
     private Pool<Card> cardPool;
+
+    private BitmapFont font;
 
     private Card testCard;
     private Texture background = new Texture(Gdx.files.internal("raw_textures/temp board.png"));
@@ -59,6 +62,7 @@ public class Board extends View implements ViewSwitchListener {
     public void create() {
         super.create();
 
+        font = new BitmapFont();
         backButton = new SimpleButton("Go Back");
         backButton.addListener(new ClickListener() {
            @Override
@@ -112,5 +116,7 @@ public class Board extends View implements ViewSwitchListener {
 
 
     private void renderMana() {
+
+        font.draw()
     }
 }

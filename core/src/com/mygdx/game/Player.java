@@ -4,9 +4,9 @@ import com.mygdx.game.Cards.Commander;
 
 public class Player {
 
-    public int Health,Fatigue,Mana;
-    public Deck myDeck;
-    public Commander myCommander;
+    private int Health,Fatigue,Mana;
+    private Deck myDeck;
+    private Commander myCommander;
 
    public Player(Deck d, Commander c ){
        myDeck = d;
@@ -17,6 +17,24 @@ public class Player {
 
     }
 
+    public int getHealth() {
+        return Health;
+    }
+
+    public int getFatigue() {
+        return Fatigue;
+    }
+
+    public int getMana() {
+        return Mana;
+    }
+
+    public Commander getMyCommander() {
+        return myCommander;
+    }
+    public Deck getMyDeck() {
+        return myDeck;
+    }
     public void startTurn(){
 
     }
