@@ -107,4 +107,8 @@ public class Board extends View implements ViewSwitchListener {
         sb.setProjectionMatrix(camera.combined);
         sb.getProjectionMatrix().setToOrtho2D(0, 0, stage.getWidth(), stage.getHeight());
     }
+
+
+    private void renderMana() {
+    }
 }
