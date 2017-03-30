@@ -41,7 +41,8 @@ public class Board extends View implements ViewSwitchListener {
         spriteBatch.begin();
         spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
         renderMana();
-      //  spriteBatch.draw(testCard.getTexture(), 0.0f, 0.0f);
+        spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
+
         spriteBatch.end();
         stage.draw();
     }

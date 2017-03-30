@@ -73,5 +73,4 @@ public class Controller {
         else return players[1];
     }
 
-
 }
