@@ -13,6 +13,8 @@ public class Game extends ApplicationAdapter {
 	View[] views = new View[4];
 	int currentViewIndex = viewIndexes.HOME.getValue();
 
+	private static Controller controller;
+
 	@Override
 	public void create () {
 		//Adding in the Default Views
@@ -23,6 +25,7 @@ public class Game extends ApplicationAdapter {
 		views[viewIndexes.BOARD.getValue()].create();
 		views[viewIndexes.SETTINGS.getValue()] = new Settings();
 		views[viewIndexes.SETTINGS.getValue()].create();
+		controller = new Controller();
 	}
 
 	@Override
@@ -67,6 +70,10 @@ public class Game extends ApplicationAdapter {
 		public int getValue() {
 			return value;
 		}
+	}
+
+	public static Controller getController() {
+		return controller;
 	}
 
 	public void setCurrentViewIndex(int i) {

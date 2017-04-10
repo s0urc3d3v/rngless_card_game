@@ -1,5 +1,8 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.utils.Pool;
+import com.mygdx.game.Cards.Card;
+import com.mygdx.game.Cards.Commander;
 import com.mygdx.game.Views.ViewSwitchListener;
 
 import java.util.ArrayList;
@@ -19,9 +22,19 @@ public class Controller {
     private static boolean playerOneTurn = true;
     private static boolean shouldChangePlayer = false;
     private static Player[] players = new Player[2];
-    public Controller(Player playerOne, Player playerTwo){
-        players[0] = playerOne;
-        players[1] = playerTwo;
+    public Controller(){
+        players[0] = new Player(new Deck(new Pool<Card>() {
+            @Override
+            protected Card newObject() {
+                return null;
+            }
+        }), new Commander());
+        players[1] = new Player(new Deck(new Pool<Card>() {
+            @Override
+            protected Card newObject() {
+                return null;
+            }
+        }), new Commander());
     }
 
     private static List<ViewSwitchListener> viewSwitchListeners = new ArrayList<>();
@@ -68,7 +81,7 @@ public class Controller {
         }
     }
 
-    public static Player getCurrentPlayer(){
+    public Player getCurrentPlayer(){
         if (playerOneTurn) return players[0];
         else return players[1];
     }

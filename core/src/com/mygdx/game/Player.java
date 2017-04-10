@@ -14,7 +14,6 @@ public class Player {
        Health = 30;
        Fatigue = 0;
        mana = 0;
-
     }
 
     public int getHealth() {

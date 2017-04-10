@@ -116,7 +116,8 @@ public class Board extends View implements ViewSwitchListener {
 
 
     private void renderMana() {
-        Player p = Controller.getCurrentPlayer();
+        Controller controller = Game.getController();
+        Player p = controller.getCurrentPlayer();
         int mana = p.getMana();
         int mp = p.getFatigue();
         font.setColor(new Color(105f/255f, 0, 248f/255f, 1));
