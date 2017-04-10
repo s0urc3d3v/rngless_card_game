@@ -68,7 +68,7 @@ public class Controller {
         }
     }
 
-    public static Player getCurrentPlayer(){
+    public Player getCurrentPlayer(){
         if (playerOneTurn) return players[0];
         else return players[1];
     }
