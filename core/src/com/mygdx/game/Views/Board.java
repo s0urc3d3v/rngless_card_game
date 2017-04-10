@@ -1,10 +1,7 @@
 package com.mygdx.game.Views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,9 +13,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Pool;
 import com.mygdx.game.Cards.Card;
 import com.mygdx.game.Cards.Minion;
+import com.mygdx.game.Controller;
 import com.mygdx.game.Core.DB_tool;
 import com.mygdx.game.Deck;
 import com.mygdx.game.Game;
+import com.mygdx.game.Player;
 import com.mygdx.game.UI.SimpleButton;
 
 public class Board extends View implements ViewSwitchListener {
@@ -117,8 +116,10 @@ public class Board extends View implements ViewSwitchListener {
 
 
     private void renderMana() {
-        int mana = 10;
-        int mp = 0;
-        font.draw(spriteBatch, mana +" / " + mp, 0, 0);
+        Player p = Controller.getCurrentPlayer();
+        int mana = p.getMana();
+        int mp = p.getFatigue();
+        font.setColor(new Color(105f/255f, 0, 248f/255f, 1));
+        font.draw(spriteBatch, mana +" M / " + mp + " MP", 100, 400);
     }
 }
