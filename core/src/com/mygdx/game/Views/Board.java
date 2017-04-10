@@ -40,8 +40,7 @@ public class Board extends View implements ViewSwitchListener {
         spriteBatch.begin();
         spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
         renderMana();
-        spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
-
+        //spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
         spriteBatch.end();
         stage.draw();
     }
@@ -121,6 +120,6 @@ public class Board extends View implements ViewSwitchListener {
         int mana = p.getMana();
         int mp = p.getFatigue();
         font.setColor(new Color(105f/255f, 0, 248f/255f, 1));
-        font.draw(spriteBatch, mana +" M / " + mp + " MP", 100, 400);
+        font.draw(spriteBatch, mana +" M / " + mp + " MP", 75, 50);
     }
 }
