@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.XmlReader;
 
 import java.io.IOException;
 
-public abstract class Card implements Pool.Poolable {
+public class Card implements Pool.Poolable {
     //The unique identifier of the card
     private String cardHash;
     //The name of the image to use on for the card texture
@@ -56,22 +56,34 @@ public abstract class Card implements Pool.Poolable {
         loadSubCardAttribs(cardAttributeElement);
     }
 
-    abstract void loadSubCardAttribs(XmlReader.Element cardAttributeElement);
+    void loadSubCardAttribs(XmlReader.Element cardAttributeElement) {
+
+    }
 
     public TextureAtlas.AtlasRegion getTexture() {
         return cardAtlas.findRegion(textureName);
     }
 
     @Override
-    public abstract void reset();
+    public  void reset(){
+        return;
+    };
 
-    public abstract void onCreate();
+    public  void onCreate(){
+        return;
+    }
 
-    public abstract void onDestroy();
+    public  void onDestroy(){
+        return;
+    }
 
-    public abstract void onAnimate();
+    public  void onAnimate(){
+        return;
+    }
 
-    public abstract void render();
+    public  void render(){
+        return;
+    }
 
     public int attackable() {
         return target;
