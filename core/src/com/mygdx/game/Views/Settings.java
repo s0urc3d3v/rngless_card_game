@@ -1,27 +1,13 @@
 package com.mygdx.game.Views;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-//import com.mygdx.game.Core.DatabaseTool;
 import com.mygdx.game.Core.DB_tool;
-import com.mygdx.game.Core.ResourceFetcher;
 import com.mygdx.game.Game;
 import com.mygdx.game.UI.SimpleButton;
-import com.sun.xml.internal.txw2.Document;
-import org.omg.CORBA.PRIVATE_MEMBER;
-import org.xml.sax.SAXException;
 
-import javax.xml.crypto.Data;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
-import java.io.*;
-import java.util.*;
+//import com.mygdx.game.Core.DatabaseTool;
 
 
 public class Settings extends View implements ViewSwitchListener {

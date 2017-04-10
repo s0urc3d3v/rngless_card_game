@@ -2,10 +2,8 @@ package com.mygdx.game.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.mygdx.game.Controller;
 import com.mygdx.game.Game;
 import com.mygdx.game.UI.SimpleButton;
 

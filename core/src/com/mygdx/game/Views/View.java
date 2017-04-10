@@ -1,11 +1,7 @@
 package com.mygdx.game.Views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.Controller;
 import com.mygdx.game.Game;
 
