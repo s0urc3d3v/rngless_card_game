@@ -1,5 +1,7 @@
 package com.mygdx.game.Views;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -16,6 +18,9 @@ public class Settings extends View implements ViewSwitchListener {
     @Override
     public void render() {
         stage.draw();
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+            returnIndex = Game.viewIndexes.HOME;
+        }
     }
     @Override
     public void resize(int width, int height) {
@@ -41,13 +46,7 @@ public class Settings extends View implements ViewSwitchListener {
 
             }
         });
-        gohome = new SimpleButton("Go Back");
-        gohome.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                returnIndex = Game.viewIndexes.HOME;
-            }
-        });
+
 
 
         Table table = new Table();
