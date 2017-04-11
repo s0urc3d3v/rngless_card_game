@@ -2,18 +2,32 @@
 allcards.png
 size: 1024,1024
 format: RGBA8888
-filter: MipMapLinearNearest,MipMapLinearNearest
+filter: Nearest,Nearest
 repeat: none
-cards/Unknown
+Uknown
   rotate: false
-  xy: 449, 2
+  xy: 449, 102
   size: 400, 611
   orig: 400, 611
   offset: 0, 0
   index: -1
-cards/test_card
+Unknown
   rotate: false
-  xy: 2, 4
+  xy: 449, 102
+  size: 400, 611
+  orig: 400, 611
+  offset: 0, 0
+  index: -1
+sandworm
+  rotate: false
+  xy: 2, 2
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+test_card
+  rotate: false
+  xy: 2, 104
   size: 445, 609
   orig: 445, 609
   offset: 0, 0
