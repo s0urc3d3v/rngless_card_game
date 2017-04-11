@@ -26,7 +26,7 @@ public class Controller {
         players[0] = new Player(new Deck(new Pool<Card>() {
             @Override
             protected Card newObject() {
-                return null;
+                return null; //This will deck be!
             }
         }), new Commander());
         players[1] = new Player(new Deck(new Pool<Card>() {
@@ -55,7 +55,7 @@ public class Controller {
 
     /**
      * Handles game events removing the requirement to have a main loop hogging resources.
-     * @param advanceTurnState tells wheather the game state (shown below) is required
+     * @param advanceTurnState tells weather the game state (shown below) is required
      *
      * 1. Turn begin (get mana poisoning)
      * 2. Play minion

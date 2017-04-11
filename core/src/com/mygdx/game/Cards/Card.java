@@ -13,6 +13,60 @@ public class Card implements Pool.Poolable {
     //The name of the image to use on for the card texture
     private String textureName;
     private int target;
+
+    private int health;
+    private int attack;
+    private int currentHealth;
+    private int voll = 0;
+
+    public String getCardHash() {
+        return cardHash;
+    }
+
+    public void setCardHash(String cardHash) {
+        this.cardHash = cardHash;
+    }
+
+    public String getTextureName() {
+        return textureName;
+    }
+
+    public void setTextureName(String textureName) {
+        this.textureName = textureName;
+    }
+
+    public int getTarget() {
+        return target;
+    }
+
+    public void setTarget(int target) {
+        this.target = target;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    public void setManaPoisoning(int manaPoisoning) {
+        this.manaPoisoning = manaPoisoning;
+    }
+
+    public static TextureAtlas getCardAtlas() {
+        return cardAtlas;
+    }
+
+    public static void setCardAtlas(TextureAtlas cardAtlas) {
+        Card.cardAtlas = cardAtlas;
+    }
+
+    public static XmlReader.Element getRootElementsOfCards() {
+        return rootElementsOfCards;
+    }
+
+    public static void setRootElementsOfCards(XmlReader.Element rootElementsOfCards) {
+        Card.rootElementsOfCards = rootElementsOfCards;
+    }
+
     private int cost;
     private int manaPoisoning;
     private static TextureAtlas cardAtlas;
@@ -97,6 +151,15 @@ public class Card implements Pool.Poolable {
         return manaPoisoning;
     }
 
+    public void initMinion(int health, int attack){
+        this.health = health;
+        this.attack = attack;
+    }
+    //True is up down is false
+    public void updateHealth(int currentHealth, int change, boolean dir){
+        if (!dir) currentHealth -= change;
+        else currentHealth += change;
+    }
 
 
 }
