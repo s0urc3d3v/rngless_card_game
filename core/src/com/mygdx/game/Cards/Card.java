@@ -2,6 +2,7 @@ package com.mygdx.game.Cards;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.XmlReader;
 
@@ -69,6 +70,7 @@ public class Card implements Pool.Poolable {
 
     private int cost;
     private int manaPoisoning;
+    private int width, height;
     private static TextureAtlas cardAtlas;
     //The XML File containing all of the card definitions
     private static XmlReader.Element rootElementsOfCards;
@@ -91,6 +93,11 @@ public class Card implements Pool.Poolable {
         cost = 0;
         manaPoisoning = 0;
         cardHash = "m0"; //Setting it to an unknown card at first.
+    }
+
+    public void setSize(int width, int height) {
+        this.width = width;
+        this.height = height;
     }
 
     //cardHash will help to find the card in the xml files.
@@ -162,5 +169,11 @@ public class Card implements Pool.Poolable {
         else currentHealth += change;
     }
 
+    public int getWidth() {
+        return width;
+    }
 
+    public int getHeight() {
+        return height;
+    }
 }
