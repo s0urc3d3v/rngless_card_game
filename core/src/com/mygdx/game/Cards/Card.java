@@ -17,7 +17,7 @@ public class Card implements Pool.Poolable {
     private int health;
     private int attack;
     private int currentHealth;
-    private int voll = 0;
+    private int full = 0;
 
     public String getCardHash() {
         return cardHash;
@@ -153,6 +153,7 @@ public class Card implements Pool.Poolable {
 
     public void initMinion(int health, int attack){
         this.health = health;
+        this.full = health; //Dont touch full it is always full health.
         this.attack = attack;
     }
     //True is up down is false
