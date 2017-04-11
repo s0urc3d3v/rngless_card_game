@@ -2,57 +2,68 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.utils.Pool;
 import com.mygdx.game.Cards.Card;
+import com.mygdx.game.Cards.Minion;
+import com.mygdx.game.Cards.Spell;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Deck {
-    private List<Card> cards;
+    private List<Card> cardsInPlay;
     private Pool<Card> cardPool;
 
     public Deck(Pool<Card> cardPool) {
+        cardsInPlay = new ArrayList<Card>();
         this.cardPool = cardPool;
     }
 
     public int getCurrentDeckSize(){
-        return cards.size();
+        return cardsInPlay.size();
     }
 
-    public void addCard(Card newCard){
-        cards.add(newCard);
+    public void addCard(String hash){
+        Card card = cardPool.obtain();
+        //Initialize the card.
+        card.init(hash);
+        cardsInPlay.add(card);
     }
+
     public void destroyCard(int index){
-        cards.remove(index);
+        cardsInPlay.remove(index);
     }
     public void shuffleDeck(){
-        //puts random cards at the end of the deck 30 size times
+        //puts random cardsInPlay at the end of the deck 30 size times
         Random random = new Random();
         int low = 0;
-        int high = cards.size();
+        int high = cardsInPlay.size();
 
         for (int i = 0; i < high; i++) {
             int x = random.nextInt(high - low) + low;
-            Card card = cards.get(x);
-            cards.remove(x);
-            cards.add(card);
+            Card card = cardsInPlay.get(x);
+            cardsInPlay.remove(x);
+            cardsInPlay.add(card);
 
         }
     }
 
     public void sortByCost(){
-        int startSize = cards.size();
-        for (int i = 0; i < cards.size(); i++) {
-            int x = cards.get(i).getCost();
-            int y = cards.get(i + 1).getCost();
+        int startSize = cardsInPlay.size();
+        for (int i = 0; i < cardsInPlay.size(); i++) {
+            int x = cardsInPlay.get(i).getCost();
+            int y = cardsInPlay.get(i + 1).getCost();
             if (x > y){
-                Card card = cards.get(i + 1);
-                cards.add(i + 1, cards.get(i));
-                cards.add(i, card);
+                Card card = cardsInPlay.get(i + 1);
+                cardsInPlay.add(i + 1, cardsInPlay.get(i));
+                cardsInPlay.add(i, card);
             }
-            if (!(cards.size() == startSize)){
-                System.out.println("Error in sort, cards where added in process");
+            if (!(cardsInPlay.size() == startSize)){
+                System.out.println("Error in sort, cardsInPlay where added in process");
             }
         }
     }
 
+    public List<Card> getCardsInPlay() {
+        return cardsInPlay;
+    }
 }

@@ -21,6 +21,8 @@ import com.mygdx.game.Game;
 import com.mygdx.game.Player;
 import com.mygdx.game.UI.SimpleButton;
 
+import java.util.List;
+
 public class Board extends View implements ViewSwitchListener {
     private SpriteBatch spriteBatch = new SpriteBatch();
     private SimpleButton backButton;
@@ -40,8 +42,11 @@ public class Board extends View implements ViewSwitchListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
         spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
+        //Draw the decks cards 3/4 of the way down the screen for our player.
+        //TODO: Test Render Deck Method.
+        renderDeck(spriteBatch, playerDeck, Gdx.graphics.getWidth(), (int)(Gdx.graphics.getHeight() / 8.0 * 3.0));
         renderMana();
-        //spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
+//        spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
         spriteBatch.end();
         stage.draw();
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
@@ -61,9 +66,28 @@ public class Board extends View implements ViewSwitchListener {
         return returnIndex;
     }
 
+    private void renderDeck(SpriteBatch batch, Deck deck, int width, int heightBase) {
+        List<Card> deckCards = deck.getCardsInPlay();
+        int spacing = width / (deckCards.size() + 1);
+        for(int i = 0; i < deckCards.size(); i++) {
+            Card currentCard = deckCards.get(i);
+            currentCard.setSize(50, 100);
+            int cardHeightOffset = (currentCard.getHeight() / 2);
+            int cardWidthOffset = (currentCard.getWidth() / 2);
+            batch.draw(deckCards.get(i).getTexture(), spacing * (i + 1) - cardWidthOffset, heightBase - cardHeightOffset, deckCards.get(i).getWidth(), deckCards.get(i).getHeight());
+        }
+    }
+
     @Override
     public void create() {
         super.create();
+
+        cardPool = new Pool<Card>() {
+            @Override
+            protected Card newObject() {
+                return new Card();
+            }
+        };
 
         font = new BitmapFont();
 
@@ -89,6 +113,11 @@ public class Board extends View implements ViewSwitchListener {
         //Creating the two decks
         playerDeck = new Deck(cardPool);
         opponentDeck = new Deck(cardPool);
+
+        //Adding cards for testing
+        for(int i = 0; i < 10; i++) {
+            playerDeck.addCard("m0");
+        }
     }
 
     private void assembleTable(Table t) {
