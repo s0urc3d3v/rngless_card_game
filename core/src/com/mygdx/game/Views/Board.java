@@ -1,6 +1,7 @@
 package com.mygdx.game.Views;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -43,6 +44,9 @@ public class Board extends View implements ViewSwitchListener {
         //spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
         spriteBatch.end();
         stage.draw();
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+            returnIndex = Game.viewIndexes.HOME;
+        }
     }
 
     @Override
@@ -62,13 +66,7 @@ public class Board extends View implements ViewSwitchListener {
         super.create();
 
         font = new BitmapFont();
-        backButton = new SimpleButton("Go Back");
-        backButton.addListener(new ClickListener() {
-           @Override
-           public void clicked(InputEvent event, float x, float y) {
-               returnIndex = Game.viewIndexes.HOME;
-           }
-        });
+
         Table table = new Table();
         assembleTable(table);
         stage.addActor(table);
@@ -97,7 +95,6 @@ public class Board extends View implements ViewSwitchListener {
         t.setFillParent(true);
         t.center().center();
         t.row();
-        t.add(backButton).width(80f).height(50f);
         t.row();
     }
 
