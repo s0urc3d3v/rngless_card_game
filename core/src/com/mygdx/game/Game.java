@@ -18,6 +18,7 @@ public class Game extends ApplicationAdapter {
 		views[viewIndexes.HOME.getValue()] = new Home();
 		views[viewIndexes.HOME.getValue()].create();
 		views[viewIndexes.CARDSELECTOR.getValue()] = new CardSelector();
+		views[viewIndexes.CARDSELECTOR.getValue()].create();
 		views[viewIndexes.BOARD.getValue()] = new Board();
 		views[viewIndexes.BOARD.getValue()].create();
 		views[viewIndexes.SETTINGS.getValue()] = new Settings();

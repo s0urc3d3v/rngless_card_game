@@ -61,6 +61,6 @@ public class CardSelector extends View implements ViewSwitchListener {
     @Override
     public void onSwitch(int switchingToIndex) {
         super.onSwitch(switchingToIndex);
-        returnIndex = Game.viewIndexes.HOME;
+        returnIndex = Game.viewIndexes.CARDSELECTOR;
     }
 }
