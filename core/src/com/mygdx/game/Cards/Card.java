@@ -2,13 +2,14 @@ package com.mygdx.game.Cards;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.XmlReader;
 
 import java.io.IOException;
 
-public class Card implements Pool.Poolable {
+public class Card extends Actor implements Pool.Poolable {
     //The unique identifier of the card
     private String cardHash;
     //The name of the image to use on for the card texture
@@ -169,11 +170,11 @@ public class Card implements Pool.Poolable {
         else currentHealth += change;
     }
 
-    public int getWidth() {
+    public int getCardWidth() {
         return width;
     }
 
-    public int getHeight() {
+    public int getCardHeight() {
         return height;
     }
 }
