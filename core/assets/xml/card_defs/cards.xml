@@ -1,5 +1,5 @@
 <cards>
 	<m0>
-		<attribs health="0" attack="0" cost="0" mp="0" textureName="cards/sandworm"/>
+		<attribs health="0" attack="0" cost="0" mp="0" textureName="sandworm"/>
 	</m0>
 </cards>
