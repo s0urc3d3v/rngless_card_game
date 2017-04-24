@@ -7,8 +7,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.mygdx.game.Game;
 
 public class CardSelector extends View implements ViewSwitchListener {
@@ -18,7 +16,7 @@ public class CardSelector extends View implements ViewSwitchListener {
 
     @Override
     public void render() {
-        refresh();
+        //refresh();
         Gdx.gl.glClearColor(100 / 255f, 100/ 255f, 100 / 255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -29,7 +27,7 @@ public class CardSelector extends View implements ViewSwitchListener {
 
         BitmapFont font = new BitmapFont();
         font.setColor(new Color(105f/255f, 0, 248f/255f, 1));
-        font.draw(spriteBatch, "All Cards", Gdx.graphics.getHeight(), Gdx.graphics.getWidth()/2);
+        font.draw(spriteBatch, "All Cards", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight() - 50);
         spriteBatch.end();
 
     }
