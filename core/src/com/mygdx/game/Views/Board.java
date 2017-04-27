@@ -57,9 +57,13 @@ public class Board extends View implements ViewSwitchListener {
             returnIndex = Game.viewIndexes.HOME;
         }
         ShapeRenderer renderer = new ShapeRenderer();
+        renderer.setProjectionMatrix(camera.combined);
+
+        float rgbToGdx[] = Controller.convertColor(254, 102, 102);
+        renderer.setColor(rgbToGdx[0], rgbToGdx[1], rgbToGdx[2], 1);
+
         renderer.begin(ShapeRenderer.ShapeType.Filled);
         renderer.rect(0,0, 250, stage.getHeight());
-        renderer.setColor(260,112,41,100);
         renderer.end();
     }
 

@@ -95,5 +95,11 @@ public class Controller {
     public Player get_player_two(){
         return players[1];
     }
-
+    public static float[] convertColor(int r, int g, int b){
+        float[] x = new float[3];
+        x[0] = r/255.0f;
+        x[1] = g/255.0f;
+        x[2] = b/255.0f;
+        return x;
+    }
 }
