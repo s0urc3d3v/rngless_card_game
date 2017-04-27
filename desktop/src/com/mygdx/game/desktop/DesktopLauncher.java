@@ -11,10 +11,12 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 //		TexturePacker.process("raw_textures/cards", "packed_textures/cards", "allcards");
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		//config.fullscreen = true;
-		//config.useHDPI = true;
+		config.resizable = false;
+		config.width = LwjglApplicationConfiguration.getDesktopDisplayMode().width;
+		config.height = LwjglApplicationConfiguration.getDesktopDisplayMode().height;
+		config.fullscreen = false;
+		config.useHDPI = true;
 		config.foregroundFPS = 60;
-		config.setFromDisplayMode(LwjglApplicationConfiguration.getDesktopDisplayMode());
 		new LwjglApplication(new Game(), config);
 	}
 }
