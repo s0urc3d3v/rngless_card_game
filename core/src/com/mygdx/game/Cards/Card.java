@@ -1,8 +1,10 @@
 package com.mygdx.game.Cards;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.XmlReader;
@@ -90,6 +92,7 @@ public class Card extends Actor implements Pool.Poolable {
 
     //Default Constructor
     public Card() {
+        super();
         target = 0;
         cost = 0;
         manaPoisoning = 0;

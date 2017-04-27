@@ -23,18 +23,16 @@ public class Controller {
     private static boolean shouldChangePlayer = false;
     private static Player[] players = new Player[2];
     public Controller(){
-        players[0] = new Player(new Deck(new Pool<Card>() {
-            @Override
-            protected Card newObject() {
-                return null; //This will deck be!
-            }
-        }), new Commander());
-        players[1] = new Player(new Deck(new Pool<Card>() {
-            @Override
-            protected Card newObject() {
-                return null;
-            }
-        }), new Commander());
+        players[0] = new Player(new Commander(), new Pool<Card>() {
+        @Override
+        protected Card newObject() {
+            return null; //This will deck be!
+        }});
+        players[1] = new Player(new Commander(), new Pool<Card>() {
+                @Override
+                protected Card newObject() {
+                    return null; //This will deck be!
+                }});
     }
 
     private static List<ViewSwitchListener> viewSwitchListeners = new ArrayList<>();
