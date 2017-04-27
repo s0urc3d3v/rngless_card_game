@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -85,9 +87,10 @@ public class Board extends View implements ViewSwitchListener {
         for(int i = 0; i < deckCards.size(); i++) {
             Card currentCard = deckCards.get(i);
             currentCard.setSize(50, 100);
-            int cardHeightOffset = (currentCard.getCardHeight() / 2);
-            int cardWidthOffset = (currentCard.getCardWidth() / 2);
-            batch.draw(currentCard.getTexture(), spacing * (i + 1) - cardWidthOffset, heightBase - cardHeightOffset, currentCard.getCardWidth(), currentCard.getCardHeight());
+            int cardHeightOffset = (int) (currentCard.getHeight() / 2);
+            int cardWidthOffset = (int) (currentCard.getWidth() / 2);
+            currentCard.setPosition(spacing * (i + 1) - cardWidthOffset, heightBase - cardHeightOffset);
+            batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
         }
     }
 
@@ -130,7 +133,24 @@ public class Board extends View implements ViewSwitchListener {
         //Adding cards for testing
         for(int i = 0; i < 10; i++) {
             playerDeck.addCard("m0");
+            stage.addActor(playerDeck.getCardsInPlay().get(playerDeck.getCurrentDeckSize() - 1));
         }
+
+        stage.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println(x + " " + y);
+                for(int i = stage.getActors().size - 1; i >= 0; i--) {
+                    Actor actor = stage.getActors().get(i);
+                    Rectangle rectangle = new Rectangle(actor.getX(), actor.getY(), actor.getWidth(), actor.getHeight());
+                    if(rectangle.contains(x, y)) {
+                        //TODO: CALL THE CARD CLICKED ANIMATION HERE
+                        System.out.println("Hit " + actor.getClass());
+                        //After a hit, break, so we don't click another actor.
+                        break;
+                    }
+                }
+            }
+        });
     }
 
     private void assembleTable(Table t) {

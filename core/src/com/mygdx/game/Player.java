@@ -60,17 +60,6 @@ public class Player {
 
     public void addCard(String hash) {
         myDeck.addCard(hash);
-        myDeck.getCardsInPlay().get(myDeck.getCurrentDeckSize() - 1).addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                System.out.println("Clicked");
-                //Get the card that was clicked on
-                Card card = (Card) event.getListenerActor();
-                //Remove the card from the current played cards list
-                myDeck.getCardsInPlay().remove(card);
-                //Set it as the card that the player is holding.
-                holdingCard = card;
-            }
-        });
     }
 
     public void startTurn(){
