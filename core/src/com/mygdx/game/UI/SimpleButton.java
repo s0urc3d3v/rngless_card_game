@@ -38,7 +38,7 @@ public class SimpleButton extends TextButton {
         else{
             parameter.minFilter = Texture.TextureFilter.Nearest;
             parameter.magFilter = Texture.TextureFilter.Nearest;
-            System.out.println("no AA aplied");
+                System.out.println("no AA aplied");
         }
 
 

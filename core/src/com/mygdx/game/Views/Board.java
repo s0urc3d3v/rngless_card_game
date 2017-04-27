@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -21,6 +23,7 @@ import com.mygdx.game.Game;
 import com.mygdx.game.Player;
 import com.mygdx.game.UI.SimpleButton;
 
+import java.lang.reflect.Parameter;
 import java.util.List;
 
 public class Board extends View implements ViewSwitchListener {
@@ -46,12 +49,16 @@ public class Board extends View implements ViewSwitchListener {
         //TODO: Test Render Deck Method.
         renderDeck(spriteBatch, playerDeck, Gdx.graphics.getWidth(), (int)(Gdx.graphics.getHeight() / 8.0 * 3.0));
         renderMana();
+        renderHealth();
 //        spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
         spriteBatch.end();
         stage.draw();
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             returnIndex = Game.viewIndexes.HOME;
         }
+        ShapeRenderer renderer = new ShapeRenderer();
+        renderer.begin(ShapeRenderer.ShapeType.Filled);
+
     }
 
     @Override
@@ -143,9 +150,27 @@ public class Board extends View implements ViewSwitchListener {
     private void renderMana() {
         Controller controller = Game.getController();
         Player p = controller.getCurrentPlayer();
-        int mana = p.getMana();
-        int mp = p.getFatigue();
+        int mana_one = p.getMana();
+        int mp_one = p.getFatigue();
+
+        int mana_two = p.getMana();
+        int mp_two = p.getFatigue();
+
         font.setColor(new Color(105f/255f, 0, 248f/255f, 1));
-        font.draw(spriteBatch, mana +" M / " + mp + " MP", 75, 50);
+        font.draw(spriteBatch, mana_one +" M / " + mp_one + " MP", 140, 60);
+        font.draw(spriteBatch, mana_two +" M / " + mp_two + " MP", 140, 910);
+
+    }
+    private void renderHealth(){
+        Controller controller = Game.getController();
+        Player p = controller.getCurrentPlayer();
+
+        int health_one = controller.get_player_one().getHealth();
+        int health_two = controller.get_player_two().getHealth();
+
+        font.setColor(new Color(105f/255f, 0, 248f/255f, 1));
+        font.draw(spriteBatch, "Health: " + health_one, 1080, 60);
+        font.draw(spriteBatch, "Health: " + health_two, 1080, 910);
+
     }
 }

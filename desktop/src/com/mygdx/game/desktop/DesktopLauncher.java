@@ -9,8 +9,10 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 //		TexturePacker.process("raw_textures/cards", "packed_textures/cards", "allcards");
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-//		config.fullscreen = true;
+		config.fullscreen = false;
 		config.resizable = false;
+		config.useHDPI = true;
+		config.foregroundFPS = 60;
 		new LwjglApplication(new Game(), config);
 	}
 }

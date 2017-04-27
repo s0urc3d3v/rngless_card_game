@@ -71,6 +71,12 @@ public class Controller {
             playerOneTurn = !playerOneTurn;
             shouldChangePlayer = false;
         }
+        if (playerOneTurn){
+            players[0].setHealth(players[0].getMana() + 1);
+        }
+        else{
+            players[1].setHealth(players[1].getMana() + 1);
+        }
         if (advanceTurnState) {
             int currentStateIndex = 0;
             for (int i = 0; i < turnStages.length; i++) {
@@ -84,6 +90,12 @@ public class Controller {
     public Player getCurrentPlayer(){
         if (playerOneTurn) return players[0];
         else return players[1];
+    }
+    public Player get_player_one(){
+        return players[0];
+    }
+    public Player get_player_two(){
+        return players[1];
     }
 
 }

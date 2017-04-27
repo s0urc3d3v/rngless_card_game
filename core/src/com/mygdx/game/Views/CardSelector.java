@@ -26,6 +26,7 @@ public class CardSelector extends View implements ViewSwitchListener {
         spriteBatch.begin();
 
         BitmapFont font = new BitmapFont();
+
         font.setColor(new Color(105f/255f, 0, 248f/255f, 1));
         font.draw(spriteBatch, "All Cards", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight() - 50);
         spriteBatch.end();

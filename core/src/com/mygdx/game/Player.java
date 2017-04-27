@@ -11,7 +11,7 @@ public class Player {
    public Player(Deck d, Commander c ){
        myDeck = d;
        myCommander = c;
-       Health = 30;
+       Health = 100;
        Fatigue = 0;
        mana = 0;
     }
