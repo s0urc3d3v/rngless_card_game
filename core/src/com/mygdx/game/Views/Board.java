@@ -58,7 +58,9 @@ public class Board extends View implements ViewSwitchListener {
         }
         ShapeRenderer renderer = new ShapeRenderer();
         renderer.begin(ShapeRenderer.ShapeType.Filled);
-
+        renderer.rect(0,0, 110, stage.getHeight());
+        renderer.setColor(0,0,0,0);
+        renderer.end();
     }
 
     @Override
