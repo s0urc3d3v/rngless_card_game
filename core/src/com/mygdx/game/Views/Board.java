@@ -58,7 +58,7 @@ public class Board extends View implements ViewSwitchListener {
         }
         ShapeRenderer renderer = new ShapeRenderer();
         renderer.begin(ShapeRenderer.ShapeType.Filled);
-        renderer.rect(0,0, 110, stage.getHeight());
+        renderer.rect(0,0, 250, stage.getHeight());
         renderer.setColor(0,0,0,0);
         renderer.end();
     }
@@ -159,8 +159,8 @@ public class Board extends View implements ViewSwitchListener {
         int mp_two = p.getFatigue();
 
         font.setColor(new Color(105f/255f, 0, 248f/255f, 1));
-        font.draw(spriteBatch, mana_one +" M / " + mp_one + " MP", 140, 60);
-        font.draw(spriteBatch, mana_two +" M / " + mp_two + " MP", 140, 910);
+        font.draw(spriteBatch, mana_one +" M / " + mp_one + " MP", 280, 60);
+        font.draw(spriteBatch, mana_two +" M / " + mp_two + " MP", 280, 850);
 
     }
     private void renderHealth(){
@@ -171,8 +171,8 @@ public class Board extends View implements ViewSwitchListener {
         int health_two = controller.get_player_two().getHealth();
 
         font.setColor(new Color(105f/255f, 0, 248f/255f, 1));
-        font.draw(spriteBatch, "Health: " + health_one, 1080, 60);
-        font.draw(spriteBatch, "Health: " + health_two, 1080, 910);
+        font.draw(spriteBatch, "Health: " + health_one, 1100, 60);
+        font.draw(spriteBatch, "Health: " + health_two, 1100, 850);
 
     }
 }
