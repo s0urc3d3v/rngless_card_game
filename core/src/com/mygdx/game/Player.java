@@ -22,7 +22,7 @@ public class Player {
 
     public Player(Commander c, Pool<Card> cardPool){
         myCommander = c;
-        Health = 30;
+        Health = 100;
         Fatigue = 0;
         mana = 0;
         myDeck = new Deck(cardPool);
