@@ -15,7 +15,7 @@ public class DesktopLauncher {
 		config.width = LwjglApplicationConfiguration.getDesktopDisplayMode().width;
 		config.height = LwjglApplicationConfiguration.getDesktopDisplayMode().height;
 		config.fullscreen = false;
-		config.useHDPI = true;
+		config.useHDPI = false;
 		config.foregroundFPS = 60;
 		new LwjglApplication(new Game(), config);
 	}
