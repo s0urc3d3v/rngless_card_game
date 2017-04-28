@@ -7,11 +7,17 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.game.Game;
+import com.mygdx.game.UI.SimpleButton;
 
 public class CardSelector extends View implements ViewSwitchListener {
     private SpriteBatch spriteBatch = new SpriteBatch();
     private Camera camera;
+    private SimpleButton Heros,Minions,Spells;
 
 
     @Override
@@ -49,6 +55,35 @@ public class CardSelector extends View implements ViewSwitchListener {
         super.create();
         camera = stage.getCamera();
 
+
+        Heros = new SimpleButton("Heros");
+        Heros.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                ;
+            }
+        });
+
+        Minions = new SimpleButton("Minions");
+        Minions.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                ;
+            }
+        });
+
+        Spells = new SimpleButton("Spells");
+        Spells.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+               ;
+            }
+        });
+
+        Table table = new Table();
+        assembleTable(table);
+        stage.addActor(table);
+
     }
 
     private void refresh(){
@@ -64,4 +99,17 @@ public class CardSelector extends View implements ViewSwitchListener {
         super.onSwitch(switchingToIndex);
         returnIndex = Game.viewIndexes.CARDSELECTOR;
     }
+
+    private void assembleTable(Table table) {
+        //Puts buttons onto the screen in a vertical alignment
+        table.setFillParent(true);
+        table.center().center();
+        table.add(Heros).padBottom(10);
+        table.row();
+        table.add(Minions).width(175).padBottom(10);
+        table.row();
+        table.add(Spells).padBottom(10);
+
+    }
+
 }
