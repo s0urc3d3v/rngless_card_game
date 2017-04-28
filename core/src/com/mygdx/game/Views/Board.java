@@ -47,9 +47,19 @@ public class Board extends View implements ViewSwitchListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
         spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
+        /*ShapeRenderer renderer = new ShapeRenderer();
+        renderer.setProjectionMatrix(camera.combined);
+
+        float rgbToGdx[] = Controller.convertColor(254, 102, 102);
+        renderer.setColor(rgbToGdx[0], rgbToGdx[1], rgbToGdx[2], 1);
+
+        renderer.begin(ShapeRenderer.ShapeType.Filled);
+        renderer.rect(0,0, 250, stage.getHeight());*/
+
+        //renderer.end();
         //Draw the decks cards 3/4 of the way down the screen for our player.
         //TODO: Test Render Deck Method.
-        renderDeck(spriteBatch, playerDeck, Gdx.graphics.getWidth(), (int)(Gdx.graphics.getHeight() / 8.0 * 3.0));
+        renderDeck(spriteBatch, playerDeck);
         renderMana();
         renderHealth();
 //        spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
@@ -58,15 +68,7 @@ public class Board extends View implements ViewSwitchListener {
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             returnIndex = Game.viewIndexes.HOME;
         }
-        ShapeRenderer renderer = new ShapeRenderer();
-        renderer.setProjectionMatrix(camera.combined);
 
-        float rgbToGdx[] = Controller.convertColor(254, 102, 102);
-        renderer.setColor(rgbToGdx[0], rgbToGdx[1], rgbToGdx[2], 1);
-
-        renderer.begin(ShapeRenderer.ShapeType.Filled);
-        renderer.rect(0,0, 250, stage.getHeight());
-        renderer.end();
     }
 
     @Override
@@ -81,18 +83,27 @@ public class Board extends View implements ViewSwitchListener {
         return returnIndex;
     }
 
-    private void renderDeck(SpriteBatch batch, Deck deck, int width, int heightBase) {
+    private void renderDeck(SpriteBatch batch, Deck deck) {
         List<Card> deckCards = deck.getCardsInPlay();
-        int spacing = width / (deckCards.size() + 1);
-        for(int i = 0; i < deckCards.size(); i++) {
+        for (int i = 0; i < deckCards.size(); i++) {
             Card currentCard = deckCards.get(i);
-            currentCard.setSize(50, 100);
-            int cardHeightOffset = (int) (currentCard.getHeight() / 2);
-            int cardWidthOffset = (int) (currentCard.getWidth() / 2);
-            currentCard.setPosition(spacing * (i + 1) - cardWidthOffset, heightBase - cardHeightOffset);
+            currentCard.setSize(100, 100);
+            //int cardHeightOffset = (int) (currentCard.getHeight() / 2);
+            //int cardWidthOffset = (int) (currentCard.getWidth() / 2);
+
+            currentCard.setPosition(12, stage.getHeight() - (110*i));
+            //batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
             batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
         }
     }
+    private void renderDeckAsText(SpriteBatch batch, Deck deck_in){
+        List<Card> cards = deck_in.getCardsInPlay();
+        for (int i = 0; i < cards.size(); i++) {
+            cards.get(i).getName();
+            //draw name
+        }
+    }
+
 
     @Override
     public void create() {

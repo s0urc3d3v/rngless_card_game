@@ -1,6 +1,7 @@
 package com.mygdx.game.Views;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -16,6 +17,9 @@ public class Home extends View implements ViewSwitchListener {
 
     @Override
     public void render() {
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+            Gdx.app.exit();
+        }
         stage.draw();
     }
 
