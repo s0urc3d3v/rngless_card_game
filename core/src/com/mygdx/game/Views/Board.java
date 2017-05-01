@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Pool;
 import com.mygdx.game.Cards.Card;
+import com.mygdx.game.Cards.Commander;
 import com.mygdx.game.Cards.Minion;
 import com.mygdx.game.Controller;
 import com.mygdx.game.Core.DB_tool;
@@ -39,7 +40,8 @@ public class Board extends View implements ViewSwitchListener {
     private Texture background = new Texture(Gdx.files.internal("raw_textures/temp board.png"));
 
     private Camera camera;
-    private Deck playerDeck, opponentDeck;
+    private Player player, opponent;
+    private Controller controller;
 
     @Override
     public void render() {
@@ -58,8 +60,8 @@ public class Board extends View implements ViewSwitchListener {
 
         //renderer.end();
         //Draw the decks cards 3/4 of the way down the screen for our player.
-        //TODO: Test Render Deck Method.
-        renderDeck(spriteBatch, playerDeck);
+        player.renderCurrentCard(spriteBatch);
+        renderDeck(spriteBatch, player.getMyDeck());
         renderMana();
         renderHealth();
 //        spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
@@ -108,6 +110,7 @@ public class Board extends View implements ViewSwitchListener {
     @Override
     public void create() {
         super.create();
+        controller = new Controller();
 
         cardPool = new Pool<Card>() {
             @Override
@@ -115,6 +118,8 @@ public class Board extends View implements ViewSwitchListener {
                 return new Card();
             }
         };
+
+        player = new Player(new Commander(), cardPool);
 
         font = new BitmapFont();
 
@@ -137,25 +142,24 @@ public class Board extends View implements ViewSwitchListener {
             System.out.println("AA not applied");
         }
 
-        //Creating the two decks
-        playerDeck = new Deck(cardPool);
-        opponentDeck = new Deck(cardPool);
-
         //Adding cards for testing
         for(int i = 0; i < 10; i++) {
-            playerDeck.addCard("m0");
-            stage.addActor(playerDeck.getCardsInPlay().get(playerDeck.getCurrentDeckSize() - 1));
+            player.addCard("m0");
+            stage.addActor(player.getMyDeck().getCardsInPlay().get(player.getMyDeck().getCurrentDeckSize() - 1));
         }
 
         stage.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println(x + " " + y);
                 for(int i = stage.getActors().size - 1; i >= 0; i--) {
                     Actor actor = stage.getActors().get(i);
+                    //Current Actor, make a collision box
                     Rectangle rectangle = new Rectangle(actor.getX(), actor.getY(), actor.getWidth(), actor.getHeight());
+                    //Check if mouse is clicked on collision box
                     if(rectangle.contains(x, y)) {
-                        //TODO: CALL THE CARD CLICKED ANIMATION HERE
-                        System.out.println("Hit " + actor.getClass());
+                        //Fire the click event if it is on our deck
+                        if(actor instanceof Card && player.getDeckSignature().equals(((Card) actor).getSignature())) {
+                            player.cardClicked((Card)actor);
+                        }
                         //After a hit, break, so we don't click another actor.
                         break;
                     }
@@ -185,13 +189,11 @@ public class Board extends View implements ViewSwitchListener {
 
 
     private void renderMana() {
-        Controller controller = Game.getController();
-        Player p = controller.getCurrentPlayer();
-        int mana_one = p.getMana();
-        int mp_one = p.getFatigue();
+        int mana_one = player.getMana();
+        int mp_one = player.getFatigue();
 
-        int mana_two = p.getMana();
-        int mp_two = p.getFatigue();
+        int mana_two = player.getMana();
+        int mp_two = player.getFatigue();
 
         font.setColor(new Color(105f/255f, 0, 248f/255f, 1));
         font.draw(spriteBatch, mana_one +" M / " + mp_one + " MP", 280, 60);
@@ -199,15 +201,11 @@ public class Board extends View implements ViewSwitchListener {
 
     }
     private void renderHealth(){
-        Controller controller = Game.getController();
-        Player p = controller.getCurrentPlayer();
-
         int health_one = controller.get_player_one().getHealth();
         int health_two = controller.get_player_two().getHealth();
 
         font.setColor(new Color(105f/255f, 0, 248f/255f, 1));
         font.draw(spriteBatch, "Health: " + health_one, 1100, 60);
         font.draw(spriteBatch, "Health: " + health_two, 1100, 850);
-
     }
 }
