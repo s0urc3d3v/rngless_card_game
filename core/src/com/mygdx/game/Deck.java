@@ -22,10 +22,11 @@ public class Deck {
         return cardsInPlay.size();
     }
 
-    public void addCard(String hash){
+    public void addCard(String hash, String playerSignature){
         Card card = cardPool.obtain();
         //Initialize the card.
         card.init(hash);
+        card.sign(playerSignature);
         cardsInPlay.add(card);
     }
 

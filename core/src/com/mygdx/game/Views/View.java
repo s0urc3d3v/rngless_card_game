@@ -33,9 +33,7 @@ public abstract class View implements ViewSwitchListener {
     public void onSwitch(int switchingToIndex) {
         //If Enum is equal to this class name then set us to the input processor
         if(switchingToIndex == Game.viewIndexes.valueOf(getClass().getSimpleName().toUpperCase()).getValue()) {
-            System.out.println("Switching to: " + Game.viewIndexes.valueOf(getClass().getSimpleName().toUpperCase()).getValue());
             Gdx.input.setInputProcessor(stage);
         }
     }
-
 }

@@ -19,6 +19,8 @@ public class Player {
     private Deck myDeck;
     private Commander myCommander;
     private Card holdingCard;
+    //Used for signing the cards in this deck
+    private String deckSignature;
 
     public Player(Commander c, Pool<Card> cardPool){
         myCommander = c;
@@ -26,6 +28,16 @@ public class Player {
         Fatigue = 0;
         mana = 0;
         myDeck = new Deck(cardPool);
+        deckSignature = Math.random() + " " + Math.random() + " " + Math.random() + this.toString();
+    }
+
+    public void cardClicked(Card card) {
+        holdingCard = card;
+        getMyDeck().getCardsInPlay().remove(card);
+    }
+
+    public String getDeckSignature() {
+        return deckSignature;
     }
 
     public int getHealth() {
@@ -54,12 +66,12 @@ public class Player {
     //Render the current card that the player is holding
     public void renderCurrentCard(SpriteBatch batch) {
         if(holdingCard != null) {
-            batch.draw(holdingCard.getTexture(), Gdx.input.getX(), Gdx.input.getY(), holdingCard.getWidth(), holdingCard.getHeight());
+            batch.draw(holdingCard.getTexture(), Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY(), holdingCard.getWidth(), holdingCard.getHeight());
         }
     }
 
     public void addCard(String hash) {
-        myDeck.addCard(hash);
+        myDeck.addCard(hash, deckSignature);
     }
 
     public void startTurn(){

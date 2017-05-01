@@ -17,6 +17,7 @@ public class Card extends Actor implements Pool.Poolable {
     //The name of the image to use on for the card texture
     private String textureName;
     private int target;
+    private String signature;
 
     private int health;
     private int attack;
@@ -165,5 +166,16 @@ public class Card extends Actor implements Pool.Poolable {
     public void updateHealth(int currentHealth, int change, boolean dir){
         if (!dir) currentHealth -= change;
         else currentHealth += change;
+    }
+    public String getCardNameAktuel(){
+
+        return null;
+    }
+    public void sign(String signature) {
+        this.signature = signature;
+    }
+
+    public String getSignature() {
+        return signature;
     }
 }
