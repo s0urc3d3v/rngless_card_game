@@ -22,7 +22,6 @@ public class Card extends Actor implements Pool.Poolable {
     private int attack;
     private int currentHealth;
     private int full = 0;
-    private String signature;
 
     public String getCardHash() {
         return cardHash;
@@ -167,12 +166,8 @@ public class Card extends Actor implements Pool.Poolable {
         if (!dir) currentHealth -= change;
         else currentHealth += change;
     }
+    public String getCardNameAktuel(){
 
-    public void sign(String signature) {
-        this.signature = signature;
-    }
-
-    public String getSignature() {
-        return signature;
+        return null;
     }
 }

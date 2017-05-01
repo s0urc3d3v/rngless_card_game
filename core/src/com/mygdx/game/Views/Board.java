@@ -26,7 +26,6 @@ import com.mygdx.game.Game;
 import com.mygdx.game.Player;
 import com.mygdx.game.UI.SimpleButton;
 
-import java.lang.reflect.Parameter;
 import java.util.List;
 
 public class Board extends View implements ViewSwitchListener {
@@ -89,11 +88,12 @@ public class Board extends View implements ViewSwitchListener {
         List<Card> deckCards = deck.getCardsInPlay();
         for (int i = 0; i < deckCards.size(); i++) {
             Card currentCard = deckCards.get(i);
-            currentCard.setSize(100, 100);
+            currentCard.setSize(50, 25);
             //int cardHeightOffset = (int) (currentCard.getHeight() / 2);
             //int cardWidthOffset = (int) (currentCard.getWidth() / 2);
 
-            currentCard.setPosition(12, stage.getHeight() - (110*i));
+            currentCard.setPosition(12, stage.getHeight() - (120*i));
+            font.draw(batch, currentCard.getName(), 12,(stage.getHeight() - (120*i) - currentCard.getHeight() - 5));
             //batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
             batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
         }
