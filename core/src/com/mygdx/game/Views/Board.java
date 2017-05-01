@@ -208,4 +208,5 @@ public class Board extends View implements ViewSwitchListener {
         font.draw(spriteBatch, "Health: " + health_one, 1100, 60);
         font.draw(spriteBatch, "Health: " + health_two, 1100, 850);
     }
+
 }
