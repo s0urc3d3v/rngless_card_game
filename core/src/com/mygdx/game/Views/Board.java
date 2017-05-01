@@ -33,7 +33,12 @@ public class Board extends View implements ViewSwitchListener {
     private SimpleButton backButton;
     private Pool<Card> cardPool;
 
+    private boolean zoomed = false;
+
     private BitmapFont font;
+
+
+    private Card zoomecard = null;
 
     private Card testCard;
     private Texture background = new Texture(Gdx.files.internal("raw_textures/temp board.png"));
@@ -47,21 +52,31 @@ public class Board extends View implements ViewSwitchListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
         spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
-        /*ShapeRenderer renderer = new ShapeRenderer();
+        ShapeRenderer renderer = new ShapeRenderer();
         renderer.setProjectionMatrix(camera.combined);
 
         float rgbToGdx[] = Controller.convertColor(254, 102, 102);
         renderer.setColor(rgbToGdx[0], rgbToGdx[1], rgbToGdx[2], 1);
 
         renderer.begin(ShapeRenderer.ShapeType.Filled);
-        renderer.rect(0,0, 250, stage.getHeight());*/
+        //renderer.rect(0,0, 250, stage.getHeight());
 
-        //renderer.end();
+        renderer.end();
         //Draw the decks cards 3/4 of the way down the screen for our player.
         //TODO: Test Render Deck Method.
         renderDeck(spriteBatch, playerDeck);
         renderMana();
         renderHealth();
+        renderer.begin(ShapeRenderer.ShapeType.Filled);
+        if(zoomecard != null) {
+            if(zoomed) {
+                renderer.setColor(new Color(0, 0, 0, 0.75f));
+                renderer.rect(0, 0, stage.getWidth(), stage.getHeight());
+                spriteBatch.draw(zoomecard.getTexture().getTexture(), 500, 100, 300, 700);
+            }
+        }
+        renderer.end();
+
 //        spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
         spriteBatch.end();
         stage.draw();
@@ -150,19 +165,47 @@ public class Board extends View implements ViewSwitchListener {
         stage.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 System.out.println(x + " " + y);
+                if(zoomed) {
+                    zoomed = false;
+                }
+            }
+        });
+
+
+        stage.addListener(new ClickListener() {
+
+            public void clicked(InputEvent event, float x, float y) {
+                Card found = null;
+                List<Card> cards = playerDeck.getCardsInPlay();
+                System.out.println(x + " " + y);
                 for(int i = stage.getActors().size - 1; i >= 0; i--) {
                     Actor actor = stage.getActors().get(i);
                     Rectangle rectangle = new Rectangle(actor.getX(), actor.getY(), actor.getWidth(), actor.getHeight());
                     if(rectangle.contains(x, y)) {
                         //TODO: CALL THE CARD CLICKED ANIMATION HERE
                         System.out.println("Hit " + actor.getClass());
+                        if(actor.getClass().toString().equals("class com.mygdx.game.Cards.Card")) {
+                            for (int j = 0; j < cards.size(); j++) {
+                                if(cards.get(j) == actor) {
+                                    found = cards.get(j);
+                                    break;
+                                }
+                            }
+                        }
                         //After a hit, break, so we don't click another actor.
                         break;
                     }
                 }
+
+                if(found != null) {
+                    zoomed = true;
+                    zoomecard = found;
+                }
             }
         });
     }
+
+
 
     private void assembleTable(Table t) {
         t.setFillParent(true);
