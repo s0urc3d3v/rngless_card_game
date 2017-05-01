@@ -89,8 +89,6 @@ public class Board extends View implements ViewSwitchListener {
         for (int i = 0; i < deckCards.size(); i++) {
             Card currentCard = deckCards.get(i);
             currentCard.setSize(50, 25);
-            //int cardHeightOffset = (int) (currentCard.getHeight() / 2);
-            //int cardWidthOffset = (int) (currentCard.getWidth() / 2);
 
             currentCard.setPosition(12, stage.getHeight() - (120*i));
             font.draw(batch, currentCard.getName(), 12,(stage.getHeight() - (120*i) - currentCard.getHeight() - 5));
