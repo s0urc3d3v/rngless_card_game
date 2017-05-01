@@ -17,7 +17,7 @@ public class Home extends View implements ViewSwitchListener {
 
     @Override
     public void render() {
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+        if (Gdx.input.isKeyPressed(Input.Keys.Q)){
             Gdx.app.exit();
         }
         stage.draw();
