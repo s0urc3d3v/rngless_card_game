@@ -69,7 +69,7 @@ public class Board extends View implements ViewSwitchListener {
                 renderer.end();
                 Gdx.gl.glDisable(GL20.GL_BLEND);
                 spriteBatch.begin();
-                spriteBatch.draw(zoomecard.getTexture().getTexture(), 500, 100, 400, 700);
+                spriteBatch.draw(zoomecard.getTexture(), 500, 100, 400, 700);
                 spriteBatch.end();
             }
             else {
