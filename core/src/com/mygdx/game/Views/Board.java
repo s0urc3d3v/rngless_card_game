@@ -26,7 +26,6 @@ import com.mygdx.game.Game;
 import com.mygdx.game.Player;
 import com.mygdx.game.UI.SimpleButton;
 
-import java.lang.reflect.Parameter;
 import java.util.List;
 
 public class Board extends View implements ViewSwitchListener {
@@ -34,7 +33,12 @@ public class Board extends View implements ViewSwitchListener {
     private SimpleButton backButton;
     private Pool<Card> cardPool;
 
+    private boolean zoomed = false;
+
     private BitmapFont font;
+
+
+    private Card zoomecard = null;
 
     private Card testCard;
     private Texture background = new Texture(Gdx.files.internal("raw_textures/temp board.png"));
@@ -49,21 +53,31 @@ public class Board extends View implements ViewSwitchListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
         spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
-        /*ShapeRenderer renderer = new ShapeRenderer();
+        ShapeRenderer renderer = new ShapeRenderer();
         renderer.setProjectionMatrix(camera.combined);
 
         float rgbToGdx[] = Controller.convertColor(254, 102, 102);
         renderer.setColor(rgbToGdx[0], rgbToGdx[1], rgbToGdx[2], 1);
 
         renderer.begin(ShapeRenderer.ShapeType.Filled);
-        renderer.rect(0,0, 250, stage.getHeight());*/
+        //renderer.rect(0,0, 250, stage.getHeight());
 
-        //renderer.end();
+        renderer.end();
         //Draw the decks cards 3/4 of the way down the screen for our player.
         player.renderCurrentCard(spriteBatch);
         renderDeck(spriteBatch, player.getMyDeck());
         renderMana();
         renderHealth();
+        renderer.begin(ShapeRenderer.ShapeType.Filled);
+        if(zoomecard != null) {
+            if(zoomed) {
+                renderer.setColor(new Color(0, 0, 0, 0.75f));
+                renderer.rect(0, 0, stage.getWidth(), stage.getHeight());
+                spriteBatch.draw(zoomecard.getTexture().getTexture(), 500, 100, 300, 700);
+            }
+        }
+        renderer.end();
+
 //        spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
         spriteBatch.end();
         stage.draw();
@@ -89,11 +103,10 @@ public class Board extends View implements ViewSwitchListener {
         List<Card> deckCards = deck.getCardsInPlay();
         for (int i = 0; i < deckCards.size(); i++) {
             Card currentCard = deckCards.get(i);
-            currentCard.setSize(100, 100);
-            //int cardHeightOffset = (int) (currentCard.getHeight() / 2);
-            //int cardWidthOffset = (int) (currentCard.getWidth() / 2);
+            currentCard.setSize(50, 25);
 
-            currentCard.setPosition(12, stage.getHeight() - (110*i));
+            currentCard.setPosition(12, stage.getHeight() - (120*i));
+            font.draw(batch, currentCard.getName(), 12,(stage.getHeight() - (120*i) - currentCard.getHeight() - 5));
             //batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
             batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
         }
@@ -144,25 +157,50 @@ public class Board extends View implements ViewSwitchListener {
 
         //Adding cards for testing
         for(int i = 0; i < 10; i++) {
-            player.addCard("m0");
-            stage.addActor(player.getMyDeck().getCardsInPlay().get(player.getMyDeck().getCurrentDeckSize() - 1));
+            playerDeck.addCard("m0");
+            stage.addActor(playerDeck.getCardsInPlay().get(playerDeck.getCurrentDeckSize() - 1));
         }
 
         stage.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
+                System.out.println(x + " " + y);
+                if(zoomed) {
+                    zoomed = false;
+                }
+            }
+        });
+
+
+        stage.addListener(new ClickListener() {
+
+            public void clicked(InputEvent event, float x, float y) {
+                Card found = null;
+                List<Card> cards = playerDeck.getCardsInPlay();
+                System.out.println(x + " " + y);
                 for(int i = stage.getActors().size - 1; i >= 0; i--) {
                     Actor actor = stage.getActors().get(i);
                     //Current Actor, make a collision box
                     Rectangle rectangle = new Rectangle(actor.getX(), actor.getY(), actor.getWidth(), actor.getHeight());
                     //Check if mouse is clicked on collision box
                     if(rectangle.contains(x, y)) {
-                        //Fire the click event if it is on our deck
-                        if(actor instanceof Card && player.getDeckSignature().equals(((Card) actor).getSignature())) {
-                            player.cardClicked((Card)actor);
+                        //TODO: CALL THE CARD CLICKED ANIMATION HERE
+                        System.out.println("Hit " + actor.getClass());
+                        if(actor.getClass().toString().equals("class com.mygdx.game.Cards.Card")) {
+                            for (int j = 0; j < cards.size(); j++) {
+                                if(cards.get(j) == actor) {
+                                    found = cards.get(j);
+                                    break;
+                                }
+                            }
                         }
                         //After a hit, break, so we don't click another actor.
                         break;
                     }
+                }
+
+                if(found != null) {
+                    zoomed = true;
+                    zoomecard = found;
                 }
             }
         });
@@ -209,4 +247,5 @@ public class Board extends View implements ViewSwitchListener {
         font.draw(spriteBatch, "Health: " + health_one, 1100, 60);
         font.draw(spriteBatch, "Health: " + health_two, 1100, 850);
     }
+
 }
