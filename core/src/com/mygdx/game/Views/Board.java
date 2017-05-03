@@ -51,35 +51,45 @@ public class Board extends View implements ViewSwitchListener {
     public void render() {
         Gdx.gl.glClearColor(255 / 255f, 102 / 255f, 102 / 255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        spriteBatch.begin();
-        spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
+
         ShapeRenderer renderer = new ShapeRenderer();
         renderer.setProjectionMatrix(camera.combined);
 
-        float rgbToGdx[] = Controller.convertColor(254, 102, 102);
-        renderer.setColor(rgbToGdx[0], rgbToGdx[1], rgbToGdx[2], 1);
-
-        renderer.begin(ShapeRenderer.ShapeType.Filled);
-        //renderer.rect(0,0, 250, stage.getHeight());
-
-        renderer.end();
         //Draw the decks cards 3/4 of the way down the screen for our player.
+        spriteBatch.begin();
+        spriteBatch.draw(background, 0, 0, stage.getWidth(), stage.getHeight());
         player.renderCurrentCard(spriteBatch);
-        renderDeck(spriteBatch, player.getMyDeck());
-        renderMana();
-        renderHealth();
-        renderer.begin(ShapeRenderer.ShapeType.Filled);
+        spriteBatch.end();
         if(zoomecard != null) {
             if(zoomed) {
-                renderer.setColor(new Color(0, 0, 0, 0.75f));
+                Gdx.gl.glEnable(GL20.GL_BLEND);
+                renderer.begin(ShapeRenderer.ShapeType.Filled);
+                renderer.setColor(new Color(0, 0, 0, 0.8f));
                 renderer.rect(0, 0, stage.getWidth(), stage.getHeight());
-                spriteBatch.draw(zoomecard.getTexture().getTexture(), 500, 100, 300, 700);
+                renderer.end();
+                Gdx.gl.glDisable(GL20.GL_BLEND);
+                spriteBatch.begin();
+                spriteBatch.draw(zoomecard.getTexture().getTexture(), 500, 100, 400, 700);
+                spriteBatch.end();
+            }
+            else {
+                spriteBatch.begin();
+                renderMana();
+                renderHealth();
+                renderDeck(spriteBatch, player.getMyDeck());
+                spriteBatch.end();
             }
         }
-        renderer.end();
+        else {
+            spriteBatch.begin();
+            renderMana();
+            renderHealth();
+            renderDeck(spriteBatch, player.getMyDeck());
+            spriteBatch.end();
+        }
+
 
 //        spriteBatch.draw(testCard.getTexture(), 100f, 30f, 100f, 100f);
-        spriteBatch.end();
         stage.draw();
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             returnIndex = Game.viewIndexes.HOME;
