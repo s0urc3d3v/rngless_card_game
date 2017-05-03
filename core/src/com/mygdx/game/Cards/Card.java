@@ -1,11 +1,8 @@
 package com.mygdx.game.Cards;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.XmlReader;
 

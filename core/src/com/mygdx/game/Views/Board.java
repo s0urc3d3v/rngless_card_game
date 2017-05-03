@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -24,13 +23,11 @@ import com.mygdx.game.Core.DB_tool;
 import com.mygdx.game.Deck;
 import com.mygdx.game.Game;
 import com.mygdx.game.Player;
-import com.mygdx.game.UI.SimpleButton;
 
 import java.util.List;
 
 public class Board extends View implements ViewSwitchListener {
     private SpriteBatch spriteBatch = new SpriteBatch();
-    private SimpleButton backButton;
     private Pool<Card> cardPool;
 
     private boolean zoomed = false;

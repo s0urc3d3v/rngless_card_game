@@ -1,17 +1,10 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Event;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Pool;
 import com.mygdx.game.Cards.Card;
 import com.mygdx.game.Cards.Commander;
-
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class Player {
 
