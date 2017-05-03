@@ -157,8 +157,8 @@ public class Board extends View implements ViewSwitchListener {
 
         //Adding cards for testing
         for(int i = 0; i < 10; i++) {
-            playerDeck.addCard("m0");
-            stage.addActor(playerDeck.getCardsInPlay().get(playerDeck.getCurrentDeckSize() - 1));
+            player.addCard("m0");
+            stage.addActor(player.getMyDeck().getCardsInPlay().get(player.getMyDeck().getCurrentDeckSize() - 1));
         }
 
         stage.addListener(new ClickListener() {
@@ -175,7 +175,7 @@ public class Board extends View implements ViewSwitchListener {
 
             public void clicked(InputEvent event, float x, float y) {
                 Card found = null;
-                List<Card> cards = playerDeck.getCardsInPlay();
+                List<Card> cards = player.getMyDeck().getCardsInPlay();
                 System.out.println(x + " " + y);
                 for(int i = stage.getActors().size - 1; i >= 0; i--) {
                     Actor actor = stage.getActors().get(i);
