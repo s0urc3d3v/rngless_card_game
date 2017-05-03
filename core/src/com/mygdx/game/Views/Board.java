@@ -113,10 +113,12 @@ public class Board extends View implements ViewSwitchListener {
         List<Card> deckCards = deck.getCardsInPlay();
         for (int i = 0; i < deckCards.size(); i++) {
             Card currentCard = deckCards.get(i);
-            currentCard.setSize(50, 25);
+            currentCard.setSize(100, 25);
 
             currentCard.setPosition(12, stage.getHeight() - (120*i));
-//            font.draw(batch, currentCard.getName(), 12,(stage.getHeight() - (120*i) - currentCard.getHeight() - 5));
+            if (!(i == 0)) {
+                font.draw(batch, currentCard.getAktuelName(), 12, (stage.getHeight() - (120 * i) - 5));
+            }
             //batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
             batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
         }

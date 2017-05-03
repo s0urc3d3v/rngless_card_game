@@ -18,11 +18,13 @@ public class Card extends Actor implements Pool.Poolable {
     private String textureName;
     private int target;
     private String signature;
+    String name;
 
     private int health;
     private int attack;
     private int currentHealth;
     private int full = 0;
+
 
     public String getCardHash() {
         return cardHash;
@@ -112,6 +114,7 @@ public class Card extends Actor implements Pool.Poolable {
         cost = Integer.parseInt(cardAttributeElement.get("cost"));
         manaPoisoning = Integer.parseInt(cardAttributeElement.get("mp"));
         textureName = cardAttributeElement.get("textureName");
+        name = cardAttributeElement.get("name");
         loadSubCardAttribs(cardAttributeElement);
     }
 
@@ -167,15 +170,15 @@ public class Card extends Actor implements Pool.Poolable {
         if (!dir) currentHealth -= change;
         else currentHealth += change;
     }
-    public String getCardNameAktuel(){
 
-        return null;
-    }
     public void sign(String signature) {
         this.signature = signature;
     }
 
     public String getSignature() {
         return signature;
+    }
+    public String getAktuelName(){
+        return this.name;
     }
 }
