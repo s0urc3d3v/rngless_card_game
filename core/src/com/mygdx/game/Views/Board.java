@@ -189,6 +189,7 @@ public class Board extends View implements ViewSwitchListener {
 
 
     private void renderMana() {
+        //Comment
         int mana_one = player.getMana();
         int mp_one = player.getFatigue();
 
