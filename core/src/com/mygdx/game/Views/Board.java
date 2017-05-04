@@ -114,7 +114,8 @@ public class Board extends View implements ViewSwitchListener {
 
             currentCard.setPosition(12, stage.getHeight() - (40*i));
             if (!(i == 0)) {
-                font.draw(batch, currentCard.getAktuelName(), 12, (stage.getHeight() - (40 * i) - 3));
+                font.setColor(new Color(Color.BLACK));
+                font.draw(batch, currentCard.getAktuelName(), 12, (stage.getHeight() - (40 * i) - 2));
             }
             //batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
             batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
