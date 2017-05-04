@@ -193,8 +193,6 @@ public class Board extends View implements ViewSwitchListener {
                     Rectangle rectangle = new Rectangle(actor.getX(), actor.getY(), actor.getWidth(), actor.getHeight());
                     //Check if mouse is clicked on collision box
                     if(rectangle.contains(x, y)) {
-                        //TODO: CALL THE CARD CLICKED ANIMATION HERE
-                        System.out.println("Hit " + actor.getClass());
                         if(actor.getClass().toString().equals("class com.mygdx.game.Cards.Card")) {
                             for (int j = 0; j < cards.size(); j++) {
                                 if(cards.get(j) == actor) {
