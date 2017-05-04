@@ -29,23 +29,20 @@ import java.util.List;
 public class Board extends View implements ViewSwitchListener {
     private SpriteBatch spriteBatch = new SpriteBatch();
     private Pool<Card> cardPool;
-
     private boolean zoomed = false;
-
     private BitmapFont font;
-
-
     private Card zoomecard = null;
-
     private Card testCard;
     private Texture background = new Texture(Gdx.files.internal("raw_textures/temp board.png"));
-
     private Camera camera;
     private Player player, opponent;
     private Controller controller;
 
     @Override
     public void render() {
+        int x = Gdx.input.getX();
+        int y = Gdx.graphics.getHeight() - Gdx.input.getY();
+        hovering(x, y);
         Gdx.gl.glClearColor(255 / 255f, 102 / 255f, 102 / 255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -66,7 +63,7 @@ public class Board extends View implements ViewSwitchListener {
                 renderer.end();
                 Gdx.gl.glDisable(GL20.GL_BLEND);
                 spriteBatch.begin();
-                spriteBatch.draw(zoomecard.getTexture(), 500, 100, 400, 700);
+                spriteBatch.draw(zoomecard.getTexture(), 500, 100, 200, 350);
                 spriteBatch.end();
             }
             else {
@@ -170,21 +167,9 @@ public class Board extends View implements ViewSwitchListener {
             stage.addActor(player.getMyDeck().getCardsInPlay().get(player.getMyDeck().getCurrentDeckSize() - 1));
         }
 
-        stage.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                System.out.println(x + " " + y);
-                if(zoomed) {
-                    zoomed = false;
-                }
-            }
-        });
-
 
         stage.addListener(new ClickListener() {
-
             public void clicked(InputEvent event, float x, float y) {
-                Card found = null;
-                List<Card> cards = player.getMyDeck().getCardsInPlay();
                 System.out.println(x + " " + y);
                 for(int i = stage.getActors().size - 1; i >= 0; i--) {
                     Actor actor = stage.getActors().get(i);
@@ -194,25 +179,34 @@ public class Board extends View implements ViewSwitchListener {
                     if(rectangle.contains(x, y)) {
                         //TODO: CALL THE CARD CLICKED ANIMATION HERE
                         System.out.println("Hit " + actor.getClass());
-                        if(actor.getClass().toString().equals("class com.mygdx.game.Cards.Card")) {
-                            for (int j = 0; j < cards.size(); j++) {
-                                if(cards.get(j) == actor) {
-                                    found = cards.get(j);
-                                    break;
-                                }
-                            }
-                        }
                         //After a hit, break, so we don't click another actor.
                         break;
                     }
                 }
-
-                if(found != null) {
-                    zoomed = true;
-                    zoomecard = found;
-                }
             }
         });
+    }
+    
+    
+    private void hovering(int x, int y) {
+        List<Card> cards = player.getMyDeck().getCardsInPlay();
+        for (int i = stage.getActors().size - 1; i >= 0; i--) {
+            Actor a = stage.getActors().get(i);
+            Rectangle r = new Rectangle(a.getX(), a.getY(), a.getWidth(), a.getHeight());
+            if(r.contains(x, y)) {
+                if(a.getClass().toString().equals("class com.mygdx.game.Cards.Card")) {
+                    for (int j = 0; j < cards.size(); j++) {
+                        if(cards.get(j) == a) {
+                           zoomecard  = cards.get(j);
+                           zoomed = true;
+                           return;
+                        }
+                    }
+                }
+                zoomed = false;
+                break;
+            }
+        }
     }
 
     private void assembleTable(Table t) {
