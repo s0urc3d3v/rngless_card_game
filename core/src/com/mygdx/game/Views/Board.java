@@ -112,9 +112,9 @@ public class Board extends View implements ViewSwitchListener {
             Card currentCard = deckCards.get(i);
             currentCard.setSize(100, 25);
 
-            currentCard.setPosition(12, stage.getHeight() - (120*i));
+            currentCard.setPosition(12, stage.getHeight() - (40*i));
             if (!(i == 0)) {
-                font.draw(batch, currentCard.getAktuelName(), 12, (stage.getHeight() - (120 * i) - 5));
+                font.draw(batch, currentCard.getAktuelName(), 12, (stage.getHeight() - (40 * i) - 3));
             }
             //batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
             batch.draw(currentCard.getTexture(), currentCard.getX(), currentCard.getY(), currentCard.getWidth(), currentCard.getHeight());
@@ -165,7 +165,7 @@ public class Board extends View implements ViewSwitchListener {
         }
 
         //Adding cards for testing
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 20; i++) {
             player.addCard("m0");
             stage.addActor(player.getMyDeck().getCardsInPlay().get(player.getMyDeck().getCurrentDeckSize() - 1));
         }
