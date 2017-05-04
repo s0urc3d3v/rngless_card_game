@@ -4,31 +4,191 @@ size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Uknown
+Centaur 2
   rotate: false
-  xy: 449, 102
-  size: 400, 611
-  orig: 400, 611
+  xy: 2, 206
+  size: 50, 100
+  orig: 50, 100
   offset: 0, 0
   index: -1
-Unknown
+Cerberus
   rotate: false
-  xy: 449, 102
-  size: 400, 611
-  orig: 400, 611
+  xy: 54, 206
+  size: 50, 100
+  orig: 50, 100
   offset: 0, 0
   index: -1
-sandworm
+Cyclops
+  rotate: false
+  xy: 106, 206
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Dwarven Smith 2
+  rotate: false
+  xy: 158, 206
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Elf Healer 2
+  rotate: false
+  xy: 210, 206
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Giant 2
+  rotate: false
+  xy: 262, 206
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Goblin 2
+  rotate: false
+  xy: 314, 206
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Gorgon 2
+  rotate: false
+  xy: 366, 206
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Griffin 2
+  rotate: false
+  xy: 418, 115
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Harpy 2
+  rotate: false
+  xy: 2, 104
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Kraken 2
+  rotate: false
+  xy: 54, 104
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Lizard Horse 2
+  rotate: false
+  xy: 106, 104
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Manticore 2
+  rotate: false
+  xy: 158, 104
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Mummy 2
+  rotate: false
+  xy: 449, 217
+  size: 350, 700
+  orig: 350, 700
+  offset: 0, 0
+  index: -1
+Pegasus 2
+  rotate: false
+  xy: 210, 104
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Phoenix 2
+  rotate: false
+  xy: 262, 104
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Satyr 2
+  rotate: false
+  xy: 314, 104
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Scarab 2
+  rotate: false
+  xy: 366, 104
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+ShroomLord  2
+  rotate: false
+  xy: 418, 13
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Sirens 2
   rotate: false
   xy: 2, 2
   size: 50, 100
   orig: 50, 100
   offset: 0, 0
   index: -1
+Sphinx 2
+  rotate: false
+  xy: 54, 2
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+Valkyrie 2
+  rotate: false
+  xy: 106, 2
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
+sandworm
+  rotate: false
+  xy: 158, 2
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: -1
 test_card
   rotate: false
-  xy: 2, 104
+  xy: 2, 308
   size: 445, 609
   orig: 445, 609
+  offset: 0, 0
+  index: -1
+
+allcards2.png
+size: 512,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Uknown
+  rotate: false
+  xy: 2, 2
+  size: 400, 611
+  orig: 400, 611
+  offset: 0, 0
+  index: -1
+Unknown
+  rotate: false
+  xy: 2, 2
+  size: 400, 611
+  orig: 400, 611
   offset: 0, 0
   index: -1
